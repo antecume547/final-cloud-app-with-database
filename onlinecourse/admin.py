@@ -23,11 +23,12 @@ class CourseAdmin(admin.ModelAdmin):
     search_fields = ['name', 'description']
 
 
-class LessonAdmin(admin.ModelAdmin):
-    list_display = ['title']
-    inlines = [QuestionInline]
+#class LessonAdmin(admin.ModelAdmin):
+#    list_display = ['title']
+#    inlines = [QuestionInline]
 class QuestionAdmin(admin.ModelAdmin):
-   inlines = [ChoiceInline] 
+    pass
+    #   inlines = [ChoiceInline] 
 
 class ChoiceAdmin(admin.ModelAdmin):
     pass
