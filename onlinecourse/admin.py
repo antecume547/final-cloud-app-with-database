@@ -25,10 +25,9 @@ class CourseAdmin(admin.ModelAdmin):
 
 class LessonAdmin(admin.ModelAdmin):
     list_display = ['title']
-#    inlines = [QuestionInline]
+    inlines = [QuestionInline]
 class QuestionAdmin(admin.ModelAdmin):
-    pass
-    #   inlines = [ChoiceInline] 
+    inlines = [ChoiceInline] 
 
 class ChoiceAdmin(admin.ModelAdmin):
     pass
