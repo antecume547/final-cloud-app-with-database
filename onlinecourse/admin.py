@@ -28,9 +28,11 @@ class LessonAdmin(admin.ModelAdmin):
     inlines = [QuestionInline]
 class QuestionAdmin(admin.ModelAdmin):
     inlines = [ChoiceInline] 
+    list_display = ('question_content', 'question_grade')
+    
 
 class ChoiceAdmin(admin.ModelAdmin):
-    pass
+    list_display = ('choice_content', 'correct')
 
 
 
