@@ -5,7 +5,7 @@ import nested_admin
 # <HINT> Register QuestionInline and ChoiceInline classes here
 
 
-class ChoiceAdmin(admin.ModelAdmin):
+class ChoiceAdmin(nested_admin.NestedModelAdmin):
     list_display = ('choice_content', 'correct')
 
 class ChoiceInline(nested_admin.NestedStackedInline):
