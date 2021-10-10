@@ -1,21 +1,21 @@
 from django.contrib import admin
 # <HINT> Import any new Models here
 from .models import Course, Lesson, Instructor, Learner, Question, Choice
-
+import nested_admin
 # <HINT> Register QuestionInline and ChoiceInline classes here
 
 
 class ChoiceAdmin(admin.ModelAdmin):
     list_display = ('choice_content', 'correct')
 
-class ChoiceInline(admin.StackedInline):
+class ChoiceInline(admin.NestedStackedInline):
     model = Choice
     extra = 3
-class LessonInline(admin.StackedInline):
+class LessonInline(admin.NestedStackedInline):
     model = Lesson
     extra = 5
 
-class QuestionInline(admin.StackedInline):
+class QuestionInline(admin.NestedStackedInline):
     model = Question
     extra = 5
     inlines = [ChoiceInline]
@@ -32,7 +32,7 @@ class LessonAdmin(admin.ModelAdmin):
     list_display = ['title']
     inlines = [QuestionInline]
 
-class QuestionAdmin(admin.ModelAdmin):
+class QuestionAdmin(admin.NestedModelAdmin):
     inlines = [ChoiceInline] 
     list_display = ('lesson_title','question_content', 'question_grade')
     #readonly_fields =['get_lesson_title']
