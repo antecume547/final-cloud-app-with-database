@@ -14,7 +14,7 @@ class LessonInline(nested_admin.NestedStackedInline):
     model = Lesson
     extra = 3
 
-class QuestionInline(nested_admin.NestedStackedInline):
+class QuestionInline(nested_admin.NestedTabularInline):
     model = Question
     extra = 3
     inlines = [ChoiceInline]
