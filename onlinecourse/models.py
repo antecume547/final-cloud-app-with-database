@@ -120,6 +120,9 @@ class Question(models.Model):
         else:
             return False
 
+    def get_lesson_title(self):
+        return self.lesson_id.title
+
 
 #  <HINT> Create a Choice Model with:
     # Used to persist choice content for a question

@@ -28,8 +28,9 @@ class LessonAdmin(admin.ModelAdmin):
     inlines = [QuestionInline]
 class QuestionAdmin(admin.ModelAdmin):
     inlines = [ChoiceInline] 
-    list_display = ('question_content', 'question_grade')
-    fields =('lesson__title', 'question_content', 'question_grade')
+    list_display = ('get_lesson_title','question_content', 'question_grade')
+    fields =( 'question_content', 'question_grade')
+
 
 class ChoiceAdmin(admin.ModelAdmin):
     list_display = ('choice_content', 'correct')
