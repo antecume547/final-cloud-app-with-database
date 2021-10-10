@@ -37,7 +37,6 @@ class LessonAdmin(nested_admin.NestedModelAdmin):
     inlines = [QuestionInline]
     extra = 3
 
-@admin.display(description='Name and course')
     def disp_title_course(self, obj):
        return obj.title + " - " + obj.course.name
 
