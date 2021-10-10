@@ -8,7 +8,7 @@ import nested_admin
 
 class ChoiceInline(nested_admin.NestedStackedInline):
     model = Choice
-    extra = 2
+    extra = 3
     classes = ['collapse']
 class LessonInline(nested_admin.NestedStackedInline):
     model = Lesson
@@ -16,9 +16,9 @@ class LessonInline(nested_admin.NestedStackedInline):
 
 class QuestionInline(nested_admin.NestedStackedInline):
     model = Question
-    extra = 5
+    extra = 3
     inlines = [ChoiceInline]
-
+    classes = ['collapse']
 class ChoiceAdmin(nested_admin.NestedModelAdmin):
     list_display = ('choice_content', 'correct')
 
@@ -31,7 +31,7 @@ class CourseAdmin(nested_admin.NestedModelAdmin):
 class LessonAdmin(nested_admin.NestedModelAdmin):
     list_display = ['title']
     inlines = [QuestionInline]
-
+    extra = 3
 class QuestionAdmin(nested_admin.NestedModelAdmin):
     inlines = [ChoiceInline] 
     list_display = ('lesson_title','question_content', 'question_grade')
