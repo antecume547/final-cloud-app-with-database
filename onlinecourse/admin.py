@@ -13,12 +13,14 @@ class ChoiceInline(nested_admin.NestedStackedInline):
 class LessonInline(nested_admin.NestedStackedInline):
     model = Lesson
     extra = 3
+    classes = ['collapse']
 
 class QuestionInline(nested_admin.NestedTabularInline):
     model = Question
     extra = 3
     inlines = [ChoiceInline]
     classes = ['collapse','wide']
+
 class ChoiceAdmin(nested_admin.NestedModelAdmin):
     list_display = ('choice_content', 'correct')
     extra = 3
@@ -31,9 +33,14 @@ class CourseAdmin(nested_admin.NestedModelAdmin):
     extra = 3
 
 class LessonAdmin(nested_admin.NestedModelAdmin):
-    list_display = ['title']
+    list_display = ['disp_title_course']
     inlines = [QuestionInline]
     extra = 3
+
+    @admin.display(description='Name and course')
+    def disp_title_course(self, obj):
+       return obj.title + " - " + obj.course.name
+
 class QuestionAdmin(nested_admin.NestedModelAdmin):
     inlines = [ChoiceInline] 
     list_display = ('lesson_title','question_content', 'question_grade')
