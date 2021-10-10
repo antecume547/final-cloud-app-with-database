@@ -18,7 +18,7 @@ class QuestionInline(nested_admin.NestedStackedInline):
     model = Question
     extra = 3
     inlines = [ChoiceInline]
-    classes = ['collapse']
+    classes = ['collapse','wide']
 class ChoiceAdmin(nested_admin.NestedModelAdmin):
     list_display = ('choice_content', 'correct')
     extra = 3
