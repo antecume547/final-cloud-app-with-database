@@ -44,7 +44,7 @@ class QuestionAdmin(nested_admin.NestedModelAdmin):
     inlines = [ChoiceInline] 
     list_display = ('lesson_title','question_content', 'question_grade')
     extra = 3
-    search_fields = ['content', 'lesson__title', 'lesson__course__name']
+    search_fields = ['question_content', 'lesson__title', 'lesson__course__name']
     #readonly_fields =['get_lesson_title']
     
 
