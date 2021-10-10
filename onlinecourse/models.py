@@ -78,7 +78,7 @@ class Lesson(models.Model):
 
     def __str__(self):
         return  self.title + "-" + \
-                "belongs to: " + self.course
+                "belongs to: " + self.course.name
 # Enrollment model
 # <HINT> Once a user enrolled a class, an enrollment entry should be created between the user and course
 # And we could use the enrollment to track information such as exam submissions
