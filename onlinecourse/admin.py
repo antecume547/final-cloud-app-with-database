@@ -5,28 +5,28 @@ import nested_admin
 # <HINT> Register QuestionInline and ChoiceInline classes here
 
 
-class ChoiceAdmin(nested_admin.NestedModelAdmin):
-    list_display = ('choice_content', 'correct')
 
 class ChoiceInline(nested_admin.NestedStackedInline):
     model = Choice
-    extra = 3
+    extra = 2
+    classes = ['collapse']
 class LessonInline(nested_admin.NestedStackedInline):
     model = Lesson
-    extra = 5
+    extra = 3
 
 class QuestionInline(nested_admin.NestedStackedInline):
     model = Question
     extra = 5
     inlines = [ChoiceInline]
 
-# Register your models here.
+class ChoiceAdmin(nested_admin.NestedModelAdmin):
+    list_display = ('choice_content', 'correct')
+
 class CourseAdmin(nested_admin.NestedModelAdmin):
     inlines = [LessonInline]
     list_display = ('name', 'pub_date')
     list_filter = ['pub_date']
     search_fields = ['name', 'description']
-
 
 class LessonAdmin(nested_admin.NestedModelAdmin):
     list_display = ['title']
