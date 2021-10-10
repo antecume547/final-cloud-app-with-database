@@ -21,14 +21,14 @@ class QuestionInline(nested_admin.NestedStackedInline):
     inlines = [ChoiceInline]
 
 # Register your models here.
-class CourseAdmin(admin.ModelAdmin):
+class CourseAdmin(nested_admin.NestedModelAdmin):
     inlines = [LessonInline]
     list_display = ('name', 'pub_date')
     list_filter = ['pub_date']
     search_fields = ['name', 'description']
 
 
-class LessonAdmin(admin.ModelAdmin):
+class LessonAdmin(nested_admin.NestedModelAdmin):
     list_display = ['title']
     inlines = [QuestionInline]
 
@@ -48,6 +48,6 @@ class QuestionAdmin(nested_admin.NestedModelAdmin):
 admin.site.register(Course, CourseAdmin)
 admin.site.register(Lesson, LessonAdmin)
 admin.site.register(Question, QuestionAdmin)
-admin.site.register(Choice, ChoiceAdmin)
+#admin.site.register(Choice, ChoiceAdmin)
 admin.site.register(Instructor)
 admin.site.register(Learner)
