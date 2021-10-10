@@ -123,7 +123,7 @@ class Question(models.Model):
         else:
             return False
 
-    def get_lesson_title(self):
+    def lesson_title(self):
         return self.lesson.title
 
 

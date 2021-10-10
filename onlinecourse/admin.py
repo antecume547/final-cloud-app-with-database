@@ -11,9 +11,10 @@ class LessonInline(admin.StackedInline):
 
 class QuestionInline(admin.StackedInline):
     model = Question
-
+    extra = 5
 class ChoiceInline(admin.StackedInline):
     model = Choice
+    extra = 3
 
 # Register your models here.
 class CourseAdmin(admin.ModelAdmin):
@@ -26,9 +27,10 @@ class CourseAdmin(admin.ModelAdmin):
 class LessonAdmin(admin.ModelAdmin):
     list_display = ['title']
     inlines = [QuestionInline]
+
 class QuestionAdmin(admin.ModelAdmin):
     inlines = [ChoiceInline] 
-    list_display = ('get_lesson_title','question_content', 'question_grade')
+    list_display = ('lesson_title','question_content', 'question_grade')
     #readonly_fields =['get_lesson_title']
     
 
