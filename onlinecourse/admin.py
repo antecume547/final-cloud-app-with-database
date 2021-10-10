@@ -33,7 +33,7 @@ class LessonAdmin(nested_admin.NestedModelAdmin):
     inlines = [QuestionInline]
     extra = 3
     search_fields = ['title', 'course__name']
-    list_filter = ('course__name')
+    list_filter = ('course__name',)
     def disp_title_course(self, obj):
        return obj.title + " - " + obj.course.name
 
