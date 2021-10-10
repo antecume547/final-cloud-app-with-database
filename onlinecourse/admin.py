@@ -8,14 +8,14 @@ import nested_admin
 class ChoiceAdmin(admin.ModelAdmin):
     list_display = ('choice_content', 'correct')
 
-class ChoiceInline(admin.NestedStackedInline):
+class ChoiceInline(nested_admin.NestedStackedInline):
     model = Choice
     extra = 3
-class LessonInline(admin.NestedStackedInline):
+class LessonInline(nested_admin.NestedStackedInline):
     model = Lesson
     extra = 5
 
-class QuestionInline(admin.NestedStackedInline):
+class QuestionInline(nested_admin.NestedStackedInline):
     model = Question
     extra = 5
     inlines = [ChoiceInline]
@@ -32,7 +32,7 @@ class LessonAdmin(admin.ModelAdmin):
     list_display = ['title']
     inlines = [QuestionInline]
 
-class QuestionAdmin(admin.NestedModelAdmin):
+class QuestionAdmin(nested_admin.NestedModelAdmin):
     inlines = [ChoiceInline] 
     list_display = ('lesson_title','question_content', 'question_grade')
     #readonly_fields =['get_lesson_title']
