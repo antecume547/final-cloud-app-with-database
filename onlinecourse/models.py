@@ -76,6 +76,9 @@ class Lesson(models.Model):
     content = models.TextField()
 
 
+    def __str__(self):
+        return  self.title + "-" + \
+                "belongs to: " + self.description
 # Enrollment model
 # <HINT> Once a user enrolled a class, an enrollment entry should be created between the user and course
 # And we could use the enrollment to track information such as exam submissions
