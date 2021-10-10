@@ -8,6 +8,9 @@ from .models import Course, Lesson, Instructor, Learner, Question, Choice
 class ChoiceAdmin(admin.ModelAdmin):
     list_display = ('choice_content', 'correct')
 
+class ChoiceInline(admin.StackedInline):
+    model = Choice
+    extra = 3
 class LessonInline(admin.StackedInline):
     model = Lesson
     extra = 5
@@ -16,9 +19,6 @@ class QuestionInline(admin.StackedInline):
     model = Question
     extra = 5
     inlines = [ChoiceInline]
-class ChoiceInline(admin.StackedInline):
-    model = Choice
-    extra = 3
 
 # Register your models here.
 class CourseAdmin(admin.ModelAdmin):
