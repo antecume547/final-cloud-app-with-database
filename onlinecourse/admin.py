@@ -21,10 +21,6 @@ class QuestionInline(nested_admin.NestedTabularInline):
     inlines = [ChoiceInline]
     classes = ['collapse','wide']
 
-class ChoiceAdmin(nested_admin.NestedModelAdmin):
-    list_display = ('choice_content', 'correct')
-    extra = 3
-
 class CourseAdmin(nested_admin.NestedModelAdmin):
     inlines = [LessonInline]
     list_display = ('name', 'pub_date')
@@ -47,6 +43,9 @@ class QuestionAdmin(nested_admin.NestedModelAdmin):
     search_fields = ['question_content', 'lesson__title', 'lesson__course__name']
     #readonly_fields =['get_lesson_title']
     
+class ChoiceAdmin(nested_admin.NestedModelAdmin):
+    list_display = ('choice_content', 'correct')
+    extra = 3
 
 
 
