@@ -5,6 +5,9 @@ from .models import Course, Lesson, Instructor, Learner, Question, Choice
 # <HINT> Register QuestionInline and ChoiceInline classes here
 
 
+class ChoiceAdmin(admin.ModelAdmin):
+    list_display = ('choice_content', 'correct')
+
 class LessonInline(admin.StackedInline):
     model = Lesson
     extra = 5
@@ -35,8 +38,6 @@ class QuestionAdmin(admin.ModelAdmin):
     #readonly_fields =['get_lesson_title']
     
 
-class ChoiceAdmin(admin.ModelAdmin):
-    list_display = ('choice_content', 'correct')
 
 
 
