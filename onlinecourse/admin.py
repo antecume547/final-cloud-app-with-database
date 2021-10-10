@@ -29,7 +29,7 @@ class LessonAdmin(admin.ModelAdmin):
 class QuestionAdmin(admin.ModelAdmin):
     inlines = [ChoiceInline] 
     list_display = ('get_lesson_title','question_content', 'question_grade')
-    readonly_fields =('get_lesson_title')
+    readonly_fields =['get_lesson_title']
     
 
 class ChoiceAdmin(admin.ModelAdmin):
