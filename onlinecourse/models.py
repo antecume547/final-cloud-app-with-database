@@ -107,7 +107,7 @@ class Enrollment(models.Model):
     # question grade/mark
 
 class Question(models.Model):
-    lesson_id = models.ForeignKey(Lesson, on_delete=models.CASCADE)
+    lesson = models.ForeignKey(Lesson, on_delete=models.CASCADE)
     question_grade = models.IntegerField(null=False)
     question_content = models.CharField(null=False, max_length=250)
 
