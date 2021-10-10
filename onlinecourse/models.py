@@ -124,7 +124,7 @@ class Question(models.Model):
             return False
 
     def lesson_title(self):
-        return self.lesson.title
+        return self.lesson.title + " - " + self.lesson.course
 
 
 #  <HINT> Create a Choice Model with:
