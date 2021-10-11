@@ -111,7 +111,7 @@ class Enrollment(models.Model):
     # question grade/mark
 
 class Question(models.Model):
-    lesson = models.ForeignKey(Lesson, on_delete=models.CASCADE)
+    course = models.ForeignKey(Course, on_delete=models.CASCADE)
     question_grade = models.IntegerField(null=False)
     question_content = models.CharField(null=False, max_length=250)
 
@@ -124,8 +124,8 @@ class Question(models.Model):
         else:
             return False
 
-    def lesson_title(self):
-        return self.lesson.title + " - " + self.lesson.course.name
+#    def lesson_title(self):
+#        return self.lesson.title + " - " + self.lesson.course.name
 
 
 #  <HINT> Create a Choice Model with:
