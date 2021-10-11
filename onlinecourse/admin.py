@@ -19,7 +19,7 @@ class QuestionInline(nested_admin.NestedTabularInline):
     classes = ['collapse','wide']
 
 class CourseAdmin(nested_admin.NestedModelAdmin):
-    inlines = [LessonInline, QuestionInline]
+    inlines = [LessonInline, questioninline]
     list_display = ('name', 'pub_date')
     list_filter = ['pub_date']
     search_fields = ['name', 'description']
@@ -27,7 +27,6 @@ class CourseAdmin(nested_admin.NestedModelAdmin):
 
 class LessonAdmin(nested_admin.NestedModelAdmin):
     list_display = ['disp_title_course']
-    inlines = [QuestionInline]
     extra = 3
     search_fields = ['title', 'course__name']
     list_filter = ('course__name',)
