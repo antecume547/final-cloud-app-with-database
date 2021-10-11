@@ -2,9 +2,6 @@ from django.contrib import admin
 # <HINT> Import any new Models here
 from .models import Course, Lesson, Instructor, Learner, Question, Choice
 import nested_admin
-# <HINT> Register QuestionInline and ChoiceInline classes here
-
-
 
 class ChoiceInline(nested_admin.NestedStackedInline):
     model = Choice
@@ -22,7 +19,7 @@ class QuestionInline(nested_admin.NestedTabularInline):
     classes = ['collapse','wide']
 
 class CourseAdmin(nested_admin.NestedModelAdmin):
-    inlines = [LessonInline]
+    inlines = [LessonInline, QuestionInline]
     list_display = ('name', 'pub_date')
     list_filter = ['pub_date']
     search_fields = ['name', 'description']
@@ -41,8 +38,9 @@ class QuestionAdmin(nested_admin.NestedModelAdmin):
     inlines = [ChoiceInline] 
     list_display = ('lesson_title','question_content', 'question_grade')
     extra = 3
-    search_fields = ['question_content', 'lesson__title', 'lesson__course__name']
-    list_filter = ('lesson__title', 'lesson__course__name') 
+    search_fields = ['question_content', 'course__name']
+    list_filter = ('course__name',) 
+
 class ChoiceAdmin(nested_admin.NestedModelAdmin):
     list_display = ('choice_content', 'correct')
     extra = 3
@@ -53,6 +51,7 @@ class ChoiceAdmin(nested_admin.NestedModelAdmin):
 
 
 # <HINT> Register Question and Choice models here
+
 
 admin.site.register(Course, CourseAdmin)
 admin.site.register(Lesson, LessonAdmin)
