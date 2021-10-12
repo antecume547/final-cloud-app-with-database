@@ -112,7 +112,7 @@ def submit(request):
                 choice = request.POST[key]
                 #print('****',  choice)
                 #choiceVal = int(choice)
-                enroll = Enrollment.objects.get(user=user.id)
+                enroll = Enrollment.objects.get(user=user).id
                 subm = Submission(enrollment=enroll, choice=choice)
                 subm.save()
 
