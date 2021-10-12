@@ -110,7 +110,7 @@ def submit(request):
         for key in request.POST:
             if key.startswith('choice'):
                 value = request.POST[key]
-                print('****',  choice)
+                print('****',  value)
                 choice_id = int(value)
                 enroll = Enrollment.objects.get(user=user)
                 subm = Submission(enrollment=enroll, choice=choice_id)
