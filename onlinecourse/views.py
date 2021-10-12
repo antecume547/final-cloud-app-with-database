@@ -117,7 +117,7 @@ def submit(request):
                 subm.save()
                 subm.choices.add(choice_id)
                 subm.save()
-                print(subm.choices)
+                print(subm.choices.values())
 
     return redirect("onlinecourse:index")
 # <HINT> Create a submit view to create an exam submission record for a course enrollment,
