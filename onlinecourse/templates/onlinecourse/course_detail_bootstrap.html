@@ -75,9 +75,9 @@
 			{% for choice in question.choice_set.all %}
 				<input type="radio" class="" name="choice_{{choice.question_id}}" id="{{choice.id}}">
 			<label for="choice_{{question_id}}">{{choice.choice_content}}</label>
-		    </div>
-		    </div>
 			{% endfor %}
+		    </div>
+		    </div>
 		{% endfor %}
 		</div>
                 {% endif %}
