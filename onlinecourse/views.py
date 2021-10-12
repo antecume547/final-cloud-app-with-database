@@ -114,7 +114,8 @@ def submit(request):
                 choice_id = int(value)
                 choice = Choice.objects.get(id=choice_id)
                 enroll = Enrollment.objects.get(user=user)
-                subm = Submission(enrollment=enroll, choices=choice)
+                subm = Submission(enrollment=enroll)
+                subm.choices = choice_id
                 subm.save()
 
     return redirect("onlinecourse:index")
