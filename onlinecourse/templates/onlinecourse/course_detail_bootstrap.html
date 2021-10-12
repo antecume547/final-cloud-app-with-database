@@ -65,12 +65,6 @@
    Show exam 
   </button>
                 {% if user.is_authenticated %}
-		<div class="alert alert-success">
-			{{}}
-		</div>
-		<div class="alert alert-danger">
-			{{}}
-		</div>
 		<form id="examSubmit" action="{{onlinecourse:submit}}"  method="POST">
             <div id="exam" class="collapse mt-5">
 		{% for question in course.question_set.all %}
