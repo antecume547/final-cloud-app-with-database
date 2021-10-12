@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 # <HINT> Import any new Models here
-from .models import Course, Enrollment
+from .models import Course, Enrollment, Enrollment, Question, Choice, Submission
 from django.contrib.auth.models import User
 from django.shortcuts import get_object_or_404, render, redirect
 from django.urls import reverse
@@ -104,9 +104,15 @@ def enroll(request, course_id):
 
 
 def submit(request, course_id ):
-    course = get_object_or_404(Course, pk=course_id)
-    user = request.user
-    enrolm = user.
+    
+    if request.method == 'POST':
+        user = request.user
+        for key in request.POST:
+            if key == 'choice':
+                choice = request[key]
+                enroll = Enrollment.get(user=user.id).id
+                subm = Submission(enrollment=enroll, choice=choice)
+                subm.save()
 
 # <HINT> Create a submit view to create an exam submission record for a course enrollment,
 # you may implement it based on following logic:
