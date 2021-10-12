@@ -65,6 +65,13 @@
    Show exam 
   </button>
                 {% if user.is_authenticated %}
+		<div class="alert alert-success">
+			{{}}
+		</div>
+		<div class="alert alert-danger">
+			{{}}
+		</div>
+		<form id="examSubmit" action="{{onlinecourse:submit}}"  method="POST">
             <div id="exam" class="collapse mt-5">
 		{% for question in course.question_set.all %}
 		    <div class="card mb-3">
@@ -87,6 +94,8 @@
 		    </div>
 		    </div>
 		{% endfor %}
+                    <input class="btn btn-success btn-block" type="submit" value="Submit">
+		</form>
 		</div>
                 {% endif %}
            
