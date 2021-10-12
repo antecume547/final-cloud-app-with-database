@@ -66,9 +66,11 @@
   </button>
                 {% if user.is_authenticated %}
             <div id="exam" class="collapse">
-		<div class="form-group">
-		{% for question in course.question_set.all %}
+		    <div class="card-body>"
+		    <div class="card-title">
 		<label for="choice_{{choice.question_id}}" class="">{{question.question_content}}</label>
+		    </div>
+		{% for question in course.question_set.all %}
 			{% for choice in question.choice_set.all %}
 				<input type="radio" class="form-control" name="choice_{{choice.question_id}}" id="{{choice.id}}">
 			<label for="choice_{{question_id}}">{{choice.choice_content}}</label>
