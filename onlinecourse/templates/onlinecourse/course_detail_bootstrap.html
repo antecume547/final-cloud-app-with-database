@@ -74,8 +74,10 @@
 		    <div class="card-body">
 			{% for choice in question.choice_set.all %}
 			<div class="form-inline">
-				<input type="radio" class="form-control" name="choice_{{choice.question_id}}" id="{{choice.id}}">
+				<div class="form-check">
 			<label for="choice_{{question_id}}">{{choice.choice_content}}</label>
+				<input type="radio" class="form-control" name="choice_{{choice.question_id}}" id="{{choice.id}}">
+			</div>
 			</div>
 			{% endfor %}
 		    </div>
