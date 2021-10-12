@@ -116,6 +116,7 @@ def submit(request):
                 subm = Submission(enrollment=enroll)
                 subm.save()
                 subm.choices.add(choice_id)
+                subm.save()
                 print(subm.choices)
 
     return redirect("onlinecourse:index")
