@@ -106,7 +106,7 @@ def enroll(request, course_id):
 def submit(request):
     print ('AAAAA') 
     if request.method == 'POST':
-        user = user.id 
+        user = request.user.id 
         for key in request.POST:
             if key == 'choice':
                 choice = request[key]
