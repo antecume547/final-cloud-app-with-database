@@ -72,8 +72,8 @@
 		{{question.question_content}}
 		    </div>
 		    <div class="card-body">
-			{% for choice in question.choice_set.all %}
 		<ul class="list-group list-group-flush">
+			{% for choice in question.choice_set.all %}
 				<li class="list-group-item">	
 			<div class="form-inline">
 				<div class="form-check">
@@ -82,8 +82,8 @@
 				</div>
 			</div>
 				</li>
-		</ul>
 			{% endfor %}
+		</ul>
 		    </div>
 		    </div>
 		{% endfor %}
