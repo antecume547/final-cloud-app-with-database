@@ -109,7 +109,7 @@ def submit(request):
         user = request.user.id 
         for key in request.POST:
             if key.startswith('choice'):
-                choice = request[key]
+                choice = request.POST[key]
                 print('****',  choice)
                 choiceVal = int(choice)
                 enroll = Enrollment.get(user=user.id).id
