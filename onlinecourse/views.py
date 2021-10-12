@@ -111,9 +111,9 @@ def submit(request):
             if key.startswith('choice'):
                 choice = request.POST[key]
                 #print('****',  choice)
-                choiceVal = int(choice)
+                #choiceVal = int(choice)
                 enroll = Enrollment.get(user=user.id).id
-                subm = Submission(enrollment=enroll, choice=choiceVal)
+                subm = Submission(enrollment=enroll, choice=choice)
                 subm.save()
 
     return redirect("onlinecourse:index")
