@@ -61,14 +61,14 @@
                 </div>
 
             -->
-<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#exam" aria-expanded="false" aria-controls="collapseExample">
+<button class="btn btn-primary mt-2 mb-2 " type="button" data-toggle="collapse" data-target="#exam" aria-expanded="false" aria-controls="collapseExample">
    Show exam 
   </button>
                 {% if user.is_authenticated %}
             <div id="exam" class="collapse">
 		{% for question in course.question_set.all %}
-		    <div class="card mb-1">
-		    <div class="card-header bg-info">
+		    <div class="card mb-3">
+		    <div class="card-header bg-light">
 		{{question.question_content}}
 		    </div>
 		    <div class="card-body">
