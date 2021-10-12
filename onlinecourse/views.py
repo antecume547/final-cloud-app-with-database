@@ -113,7 +113,7 @@ def submit(request):
                 print('****',  choice)
                 choice_id = int(value)
                 enroll = Enrollment.objects.get(user=user)
-                subm = Submission(enrollment=enroll, choice=choice)
+                subm = Submission(enrollment=enroll, choice=choice_id)
                 subm.save()
 
     return redirect("onlinecourse:index")
