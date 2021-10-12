@@ -67,10 +67,10 @@
                 {% if user.is_authenticated %}
             <div id="exam" class="collapse">
 		<div class="card card-body">
-		{% for question in course.question_set.all  % }
+		{% for question in course.question_set.all %}
 		{{question}}
 		<div class="card card-body">
-			{% for choice in question.choice_set.all  %}
+			{% for choice in question.choice_set.all %}
 			{{choice}}
 <div class="card card-body">
 
