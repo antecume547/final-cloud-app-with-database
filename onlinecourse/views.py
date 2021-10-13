@@ -112,7 +112,7 @@ def get_ansvers(request):
             submitted_anwsers.append(choice_id)
     return submitted_anwsers
 
-def show_exam_result(request, datas):
+def show_exam_result(request,course_id, datas):
     context = datas 
     template='onlinecourse/exam_result_bootstrap.html'
     return render(request, template, context)
