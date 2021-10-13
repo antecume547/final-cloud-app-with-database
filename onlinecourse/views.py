@@ -113,7 +113,7 @@ def get_ansvers(request):
     return submitted_anwsers
 
 def show_exam_result(request,subm_id):
-    context = subm_id 
+    context = {subm_id,} 
     template='onlinecourse/exam_result_bootstrap.html'
     return render(request, template, context)
 
