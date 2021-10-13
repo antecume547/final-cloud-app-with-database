@@ -125,7 +125,7 @@ def submit(request, course_id):
             subm.save()
         datas = {'user' : user,
                 'course_id' : course_id,
-                'subm_id' : subm_id,
+                'subm_id' : enroll.id,
                 'submitted_anwsers_ids' : answer_ids,
                 }
         print (Submission.objects.all().values())
