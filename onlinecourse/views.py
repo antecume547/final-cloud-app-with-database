@@ -8,6 +8,7 @@ from django.urls import reverse
 from django.views import generic
 from django.contrib.auth import login, logout, authenticate
 import logging
+import urllib
 # Get an instance of a logger
 logger = logging.getLogger(__name__)
 # Create your views here.
@@ -128,8 +129,11 @@ def submit(request, course_id):
                 'subm_id' : enroll.id,
                 'submitted_anwsers_ids' : answer_ids,
                 }
-        print (Submission.objects.all().values())
-        return HttpResponseRedirect(reverse(viewname='onlinecourse:show_exam_result', kwargs= datas))
+
+        uri = urllib.urlencode(datas) 
+        print(uri)
+        print ('+++' + subm.id))
+        return HttpResponseRedirect(reverse(viewname='onlinecourse:show_exam_result', args=uri ))
        
 def show_exam_result(request, datas):
     context = datas 
