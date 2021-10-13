@@ -102,24 +102,53 @@ def enroll(request, course_id):
 
     return HttpResponseRedirect(reverse(viewname='onlinecourse:course_details', args=(course.id,)))
 
-
-def submit(request):
-    print ('AAAAAi') 
-    if request.method == 'POST':
-        user = request.user.id 
+def get_ansvers(request):
+    submitted_anwsers = []
         for key in request.POST:
             if key.startswith('choice'):
                 value = request.POST[key]
-                print('****',  value)
                 choice_id = int(value)
-                enroll = Enrollment.objects.get(user=user)
-                subm = Submission(enrollment=enroll)
-                subm.save()
-                subm.choices.add(choice_id)
-                subm.save()
-                print(subm.choices.values())
+                submitted_anwsers.append(choice_id)
+    return submitted_anwsers
 
-    return redirect("onlinecourse:index")
+def submit(request, course_id):
+    
+    if request.method == 'POST':
+        user = request.user.id 
+        answer_ids = get_ansvers(request)
+        enroll = Enrollment.objects.get(user=user)
+        subm = Submission(enrollment=enroll)
+        for id in answer_ids:
+            subm.save()
+            subm.choices.add(id)
+            #subm.save()
+        datas = {'user' : user,
+                'course_id' : course_id,
+                'subm_id' : subm_id,
+                'submitted_anwsers_ids' : answer_ids,
+                }
+    return HttpResponseRedirect(reverse(viewname='onlinecourse:show_exam_result', kwargs= datas))
+       
+def show_exam_result(request, datas):
+    context = datas 
+    template='onlinecourse/exam_result_bootstrap.html'
+            return render(request, template, context)
+
+    
+
+   # for key in request.POST:
+   #         if key.startswith('choice'):
+   #             value = request.POST[key]
+   #             choice_id = int(value)
+   #             enroll = Enrollment.objects.get(user=user)
+   #             subm = Submission(enrollment=enroll)
+   #             subm.save()
+   #             subm.choices.add(choice_id)
+   #             subm.save()
+
+   # return redirect("onlinecourse:result")
+    
+
 # <HINT> Create a submit view to create an exam submission record for a course enrollment,
 # you may implement it based on following logic:
          # Get user and course object, then get the associated enrollment object created when the user enrolled the course
