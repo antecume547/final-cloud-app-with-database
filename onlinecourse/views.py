@@ -112,6 +112,11 @@ def get_ansvers(request):
             submitted_anwsers.append(choice_id)
     return submitted_anwsers
 
+def show_exam_result(request, datas):
+    context = datas 
+    template='onlinecourse/exam_result_bootstrap.html'
+    return render(request, template, context)
+
 def submit(request, course_id):
     
     if request.method == 'POST':
@@ -135,10 +140,6 @@ def submit(request, course_id):
         print ('+++' + str(subm.id))
         return HttpResponseRedirect(reverse(viewname='onlinecourse:show_exam_result', args=[datas]))
        
-def show_exam_result(request, datas):
-    context = datas 
-    template='onlinecourse/exam_result_bootstrap.html'
-    return render(request, template, context)
 
     
 
