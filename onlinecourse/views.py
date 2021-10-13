@@ -127,12 +127,12 @@ def submit(request, course_id):
                 'subm_id' : subm_id,
                 'submitted_anwsers_ids' : answer_ids,
                 }
-    return HttpResponseRedirect(reverse(viewname='onlinecourse:show_exam_result', kwargs= datas))
+        return HttpResponseRedirect(reverse(viewname='onlinecourse:show_exam_result', kwargs= datas))
        
 def show_exam_result(request, datas):
     context = datas 
     template='onlinecourse/exam_result_bootstrap.html'
-            return render(request, template, context)
+    return render(request, template, context)
 
     
 
