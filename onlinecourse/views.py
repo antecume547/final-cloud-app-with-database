@@ -104,11 +104,11 @@ def enroll(request, course_id):
 
 def get_ansvers(request):
     submitted_anwsers = []
-        for key in request.POST:
-            if key.startswith('choice'):
-                value = request.POST[key]
-                choice_id = int(value)
-                submitted_anwsers.append(choice_id)
+    for key in request.POST:
+        if key.startswith('choice'):
+            value = request.POST[key]
+            choice_id = int(value)
+            submitted_anwsers.append(choice_id)
     return submitted_anwsers
 
 def submit(request, course_id):
