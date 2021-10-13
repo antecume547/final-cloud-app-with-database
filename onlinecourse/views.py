@@ -128,7 +128,7 @@ def submit(request, course_id):
                 'subm_id' : subm_id,
                 'submitted_anwsers_ids' : answer_ids,
                 }
-        print (subm.all())
+        print (Submission.objects.all())
         return HttpResponseRedirect(reverse(viewname='onlinecourse:show_exam_result', kwargs= datas))
        
 def show_exam_result(request, datas):
