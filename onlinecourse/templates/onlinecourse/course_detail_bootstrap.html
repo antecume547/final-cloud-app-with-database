@@ -65,7 +65,7 @@
    Show exam 
   </button>
                 {% if user.is_authenticated %}
-		<form id="examSubmit" action="{% url 'onlinecourse:submit'  datas %}"  method="POST">
+		<form id="examSubmit" action="{% url 'onlinecourse:submit' course.id %}"  method="POST">
                         {% csrf_token %}
             <div id="exam" class="collapse mt-5">
 		{% for question in course.question_set.all %}
