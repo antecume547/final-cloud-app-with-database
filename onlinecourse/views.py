@@ -138,7 +138,7 @@ def submit(request, course_id):
         uri = urllib.parse.urlencode(datas) 
         print(uri)
         print ('+++' + str(subm.id))
-        return HttpResponseRedirect(reverse(viewname='onlinecourse:show_exam_result', args=[datas]))
+        return HttpResponseRedirect(reverse(viewname='onlinecourse:show_exam_result', kwargs=[datas]))
        
 
     
