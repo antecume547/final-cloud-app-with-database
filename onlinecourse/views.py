@@ -129,15 +129,7 @@ def submit(request, course_id):
             subm.save()
             subm.choices.add(id)
             subm.save()
-        datas = {'user' : user,
-                'course_id' : course_id,
-                'subm_id' : enroll.id,
-                'submitted_anwsers_ids' : answer_ids,
-                }
-
-        uri = urllib.parse.urlencode(datas) 
-        print(uri)
-        print ('+++' + str(subm.id))
+        
         return HttpResponseRedirect(reverse(viewname='onlinecourse:show_exam_result', args=[subm_id]))
        
 
