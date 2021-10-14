@@ -128,7 +128,7 @@ def submit(request, course_id):
         return HttpResponseRedirect(reverse(viewname='onlinecourse:show_exam_result', args=(subm_id,course_id)))
        
 def show_exam_result(request,course_id, subm_id):
-    cours = Course.objects.get(pk=course_id)
+    course = Course.objects.get(pk=course_id)
     context = {'subm_id':subm_id,
 
             'course': course} 
