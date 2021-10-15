@@ -152,7 +152,6 @@ def show_exam_result(request,course_id, subm_id):
         for answ in submitted_anwsers_to_actual_question.all():
             submitted_anwsers.append(answ.id)
         
-        print ('++++' + str(submitted_anwsers) + str(actual_question_content))
 
         if  actual_question.is_get_score(submitted_anwser) == True:
             answer['is_correct'] = True
