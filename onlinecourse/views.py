@@ -154,7 +154,7 @@ def show_exam_result(request,course_id, subm_id):
         
 
         if  actual_question.is_get_score(submitted_anwsers) == True:
-            answer['is_correct'] = True
+            answers['is_correct'] = True
             answers['right_ansvers'] = None
             score + question_grade
         else:
@@ -165,7 +165,7 @@ def show_exam_result(request,course_id, subm_id):
             answers['is_succed'] = False
             answers['right_ansvers'] = right_ansvers_to_actual_question
         
-        answer['question'] = actual_question 
+        answers['question'] = actual_question 
         answers['submitted_anwsers'] = submitted_anwsers_to_actual_question
         response_object.append(answers)
         total_score =+ question_grade   
