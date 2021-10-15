@@ -153,7 +153,7 @@ def show_exam_result(request,course_id, subm_id):
             submitted_anwsers.append(answ.id)
         
 
-        if  actual_question.is_get_score(submitted_anwser) == True:
+        if  actual_question.is_get_score(submitted_anwsers) == True:
             answer['is_correct'] = True
             answers['right_ansvers'] = None
             score + question_grade
