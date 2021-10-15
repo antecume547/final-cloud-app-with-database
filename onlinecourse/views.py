@@ -135,7 +135,7 @@ def show_exam_result(request,course_id, subm_id):
     response_object = []
     total_score = 0
     score = 0
-    for choice  in choices:
+    for choice  in choices.choice.all():
         answers = dict(zip(keys, [None]*len(keys)))
         actual_question =  questions.filter(choice__id = choice.id).question_content
         submitted_anwser = choice.choice_content
