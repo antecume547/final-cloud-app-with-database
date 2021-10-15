@@ -130,7 +130,7 @@ def submit(request, course_id):
 def show_exam_result(request,course_id, subm_id):
     course = get_object_or_404(Course, pk=course_id)
     enroll = get_object_or_404(Enrollment, pk=subm_id)
-    choices = Submission.objects.filter(enrollment=subm_id)
+    choices = Submission.objects.filter(enrollment=subm_id).choices
     questions = Question.objects.filter(course = course_id)
 
     keys = ['question_text','submitted_anwser','is_correct','right_ansvers']
