@@ -154,15 +154,16 @@ def show_exam_result(request,course_id, subm_id):
         
 
         if  actual_question.is_get_score(submitted_anwsers) == True:
+            answers['is_succed'] = True
             answers['is_correct'] = True
             answers['right_ansvers'] = None
             score + question_grade
         else:
             #get the correct answers
+            answers['is_succed'] = False
             right_ansvers_to_actual_question = []
             for answ in actual_question.choice_set.filter(correct = True ).all():
                 right_ansvers_to_actual_question.append(answ)
-            answers['is_succed'] = False
             answers['right_ansvers'] = right_ansvers_to_actual_question
         
         answers['question'] = actual_question 
