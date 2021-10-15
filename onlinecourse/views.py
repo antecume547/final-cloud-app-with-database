@@ -141,7 +141,7 @@ def show_exam_result(request,course_id, subm_id):
         answers = dict(zip(keys, [None]*len(keys)))
         actual_question =  questions.filter(choice__id = choice.id)
         submitted_anwser = choice.choices
-        print ('++++' + str(choice.choices.id))
+        print ('++++' + str(choice.choices))
         print(submitted_anwser)
 
         question_grade = actual_question.question_grade
