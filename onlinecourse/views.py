@@ -129,9 +129,42 @@ def submit(request, course_id):
        
 def show_exam_result(request,course_id, subm_id):
     course = get_object_or_404(Course, pk=course_id)
-    subm = get_object_or_404(Enrollment, pk=subm_id)
+    enroll = get_object_or_404(Enrollment, pk=subm_id)
+    choices = Submission.objects.filter(enrollment=subm_id)
+    questions = Question.objects.filter(course = course_id)
+
+    keys = ['question_text','submitted_anwser','is_correct','right_ansvers']
+    response_object = []
+    total_score = 0
+    score = 0
+    
+    for choice  in choices:
+            answers = dict(zip(keys, None*len(keys)))
+            actual_question =  questions.objects.filter(choice__id = choice.id)
+            submitted_anwser = choice.choice_content
+            question_grade = actual_question.question_grade
+            question_text = actual_question.question_content
+        if  questions.is_get_score(choice.id) == True:
+            answer['is_correct'] = True
+            score + question_grade
+            answers['right_ansvers'] = None
+        else:
+            correct_answer =  Choices.objects.filter(question_id = actual_question.id, correct = True ).choice_content
+            correct_answer_list = []
+            for answ in correct_answer:
+                correct_answer_list.append(answ)
+            answers['is_correct'] = False
+            answers['right_ansvers'] = correct_answer_list
+        response_object.append(answers)
+        total_score =+ question_grade   
+    print(answers)
+    grade = (total_score/100) * score
+                
+
     context = {'course': course,
-            'subm':subm_id,} 
+            'grade' : grade,    
+            'response_object': response_object,} 
+
     template='onlinecourse/exam_result_bootstrap.html'
     return render(request, template, context)
 
