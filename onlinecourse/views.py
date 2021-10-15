@@ -131,7 +131,7 @@ def show_exam_result(request,course_id, subm_id):
     submission = get_object_or_404(Submission, pk=subm_id)
     choices = submission.choices
     questions = Question.objects.filter(course = course_id)
-    print('******'+ choices)
+    print('******'+ str(choices.values()))
     return
     keys = ['question_text','submitted_anwser','is_correct','right_ansvers']
     response_object = []
