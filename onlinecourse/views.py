@@ -139,11 +139,11 @@ def show_exam_result(request,course_id, subm_id):
     score = 0
     
     for choice  in choices:
-            answers = dict(zip(keys, None*len(keys)))
-            actual_question =  questions.objects.filter(choice__id = choice.id)
-            submitted_anwser = choice.choice_content
-            question_grade = actual_question.question_grade
-            question_text = actual_question.question_content
+        answers = dict(zip(keys, None*len(keys)))
+        actual_question =  questions.objects.filter(choice__id = choice.id)
+        submitted_anwser = choice.choice_content
+        question_grade = actual_question.question_grade
+        question_text = actual_question.question_content
         if  questions.is_get_score(choice.id) == True:
             answer['is_correct'] = True
             score + question_grade
