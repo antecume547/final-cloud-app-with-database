@@ -120,8 +120,8 @@ def submit(request, course_id):
         enroll = Enrollment.objects.get(user=user)
         subm = Submission(enrollment=enroll)
         subm_id = enroll.id 
+        subm.save()
         for id in answer_ids:
-            subm.save()
             subm.choices.add(id)
             subm.save()
         
