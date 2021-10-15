@@ -138,7 +138,7 @@ def show_exam_result(request,course_id, subm_id):
     total_score = 0
     score = 0
     print(choices.values())
-    print('++++' + choices[0].choice.id)
+    print('++++' + choices.choice_set.all())
     return 
     for choice  in choices:
         print(choice.choices)
