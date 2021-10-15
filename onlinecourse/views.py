@@ -161,7 +161,7 @@ def show_exam_result(request,course_id, subm_id):
             #get the correct answers
             right_ansvers_to_actual_question = []
             for answ in actual_question.choice_set.filter(correct = True ).all():
-                right_ansvers_to_actual_question.append(answ.id)
+                right_ansvers_to_actual_question.append(answ)
             answers['is_succed'] = False
             answers['right_ansvers'] = right_ansvers_to_actual_question
         
