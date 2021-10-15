@@ -132,7 +132,7 @@ def show_exam_result(request,course_id, subm_id):
     choices = submission.choices.all()
     print('******'+ str(choices.values()))
 
-    keys = ['question_text','submitted_anwser','is_correct','right_ansvers']
+    keys = ['question','submitted_anwsers','right_ansvers','is_succed',]
     response_object = []
     total_score = 0
     score = 0
@@ -143,34 +143,34 @@ def show_exam_result(request,course_id, subm_id):
     for choice  in choices:
         answers = dict(zip(keys, [None]*len(keys)))
         actual_question =  questions.get(choice__id = choice.id)
-        actual_question_content = actual_question.question_content
-        question_grade = actual_question.question_grade
-        question_text = actual_question.question_content
         submitted_anwsers_to_actual_question = choices.filter(question_id = actual_question.id)
         
         print ('\n++++++++ ' + str(submitted_anwsers_to_actual_question.values()))
         
-        
-
-        submitted_anwser = []
+        #get the submitted_anwsers
+        submitted_anwsers = []
         for answ in submitted_anwsers_to_actual_question.all():
             submitted_anwser.append(answ.id)
-
+        
         print ('++++' + str(submitted_anwser) + str(actual_question_content))
 
         if  actual_question.is_get_score(submitted_anwser) == True:
             answer['is_correct'] = True
-            score + question_grade
             answers['right_ansvers'] = None
+            score + question_grade
         else:
-            correct_answer =  Choices.objects.filter(question_id = actual_question.id, correct = True ).choice_content
-            correct_answer_list = []
-            for answ in correct_answer:
-                correct_answer_list.append(answ)
-            answers['is_correct'] = False
-            answers['right_ansvers'] = correct_answer_list
+            #get the correct answers
+            right_ansvers_to_actual_question = []
+            for answ in actual_question.choice_set.filter(correct = True ).all():
+                right_ansvers_to_actual_question.append(answ.id)
+            answers['is_succed'] = False
+            answers['right_ansvers'] = right_ansvers_to_actual_question
+        
+        answer['question'] = actual_question 
+        answers['submitted_anwsers'] = submitted_anwsers_to_actual_question
         response_object.append(answers)
         total_score =+ question_grade   
+
     print(answers)
     grade = (total_score/100) * score
                 
