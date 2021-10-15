@@ -150,9 +150,9 @@ def show_exam_result(request,course_id, subm_id):
         #get the submitted_anwsers
         submitted_anwsers = []
         for answ in submitted_anwsers_to_actual_question.all():
-            submitted_anwser.append(answ.id)
+            submitted_anwsers.append(answ.id)
         
-        print ('++++' + str(submitted_anwser) + str(actual_question_content))
+        print ('++++' + str(submitted_anwsers) + str(actual_question_content))
 
         if  actual_question.is_get_score(submitted_anwser) == True:
             answer['is_correct'] = True
