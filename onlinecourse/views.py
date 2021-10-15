@@ -128,8 +128,8 @@ def submit(request, course_id):
        
 def show_exam_result(request,course_id, subm_id):
     course = get_object_or_404(Course, pk=course_id)
-    enroll = get_object_or_404(Enrollment, pk=subm_id)
-    choices = Submission.objects.get(enrollment=subm_id).choices
+    submission = get_object_or_404(Submission, pk=subm_id)
+    choices = submission.choices
     questions = Question.objects.filter(course = course_id)
     print('******'+ choices)
     return
