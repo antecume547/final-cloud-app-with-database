@@ -123,26 +123,23 @@ def submit(request, course_id):
         for id in answer_ids:
             subm.choices.add(id)
             subm.save()
-        subm_id = subm.id 
-        return HttpResponseRedirect(reverse(viewname='onlinecourse:show_exam_result', args=(subm_id,course_id)))
+        return HttpResponseRedirect(reverse(viewname='onlinecourse:show_exam_result', args=(subm.id,course_id)))
        
 def show_exam_result(request,course_id, subm_id):
     course = get_object_or_404(Course, pk=course_id)
     submission = get_object_or_404(Submission, pk=subm_id)
     choices = submission.choices
-    questions = Question.objects.filter(course = course_id)
     print('******'+ str(choices.values()))
-    return
+
     keys = ['question_text','submitted_anwser','is_correct','right_ansvers']
     response_object = []
     total_score = 0
     score = 0
     for choice  in choices:
         answers = dict(zip(keys, [None]*len(keys)))
-        actual_question =  questions.filter(choice__id = choice.id)
-        submitted_anwser = choice.choices
-        print ('++++' + str(choice.choices))
-        print(submitted_anwser)
+        actual_question =  questions.filter(choice__id = choice.id).question_content
+        submitted_anwser = choice.choice_content
+        print ('++++' + str(submitted_anwser) + str(actual_question))
 
         question_grade = actual_question.question_grade
         question_text = actual_question.question_content
