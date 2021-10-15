@@ -158,7 +158,7 @@ def show_exam_result(request,course_id, subm_id):
 
         print ('++++' + str(submitted_anwser) + str(actual_question_content))
 
-        if  actual_question.is_get_score(choice.id) == True:
+        if  actual_question.is_get_score(submitted_anwser) == True:
             answer['is_correct'] = True
             score + question_grade
             answers['right_ansvers'] = None
