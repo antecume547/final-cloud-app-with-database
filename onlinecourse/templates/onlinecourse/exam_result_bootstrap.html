@@ -35,6 +35,11 @@
     </div>
 </nav>
 {{grade}}
+{% for  resp in response_object.answers %}
+	{% for in answ in resp  %}
+		{{resp['question'].question_content}}
+	{% endfor  %}
+	{% endfor  %}
 {{response_object}}
 <div class="container-fluid">
     {% if grade > 80 %}

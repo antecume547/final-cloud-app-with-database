@@ -136,9 +136,6 @@ def show_exam_result(request,course_id, subm_id):
     response_object = []
     total_score = 0
     score = 0
-    
-
-
 
     for choice  in choices:
         answers = dict(zip(keys, [None]*len(keys)))
@@ -155,7 +152,6 @@ def show_exam_result(request,course_id, subm_id):
 
         if  actual_question.is_get_score(submitted_anwsers) == True:
             answers['is_succed'] = True
-            answers['is_correct'] = True
             answers['right_ansvers'] = None
             score + question_grade
         else:
