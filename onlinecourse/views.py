@@ -138,7 +138,7 @@ def show_exam_result(request,course_id, subm_id):
     total_score = 0
     score = 0
     print(choices.values()) 
-    break
+    return 
     for choice  in choices:
         print(choice.choices)
         answers = dict(zip(keys, [None]*len(keys)))
