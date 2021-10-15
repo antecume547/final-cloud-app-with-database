@@ -36,9 +36,11 @@
 </nav>
 {{grade}}
 {% for  resp in response_object.answers.question %}
-	{{resp}}
+	{{resp.question_content}}
 	{% endfor  %}
-{{ #response_object}}
+
+
+	{{ response_object}}
 <div class="container-fluid">
     {% if grade > 80 %}
     <div class="alert alert-success">
