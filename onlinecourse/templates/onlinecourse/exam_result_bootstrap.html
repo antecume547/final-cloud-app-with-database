@@ -36,7 +36,7 @@
 </nav>
 {{grade}}
 {% for  resp in response_object.answers %}
-	{% for in answ in  response_object.answers['question'].question_content %}
+	{% for in answ in  response_object.answers['question'] %}
 		{{resp['question'].question_content}}
 	{% endfor  %}
 	{% endfor  %}
