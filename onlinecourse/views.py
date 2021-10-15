@@ -147,7 +147,7 @@ def show_exam_result(request,course_id, subm_id):
         question_grade = actual_question.question_grade
         question_text = actual_question.question_content
         submitted_anwsers_to_actual_question = choices.filter(question_id = actual_question.id)
-        print ('\n++++++++ ' + str(submitted_anwsers_to_actual_question.values))
+        print ('\n++++++++ ' + str(submitted_anwsers_to_actual_question.values()))
         return
 
 
