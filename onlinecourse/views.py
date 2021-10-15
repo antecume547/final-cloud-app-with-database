@@ -128,14 +128,14 @@ def submit(request, course_id):
 def show_exam_result(request,course_id, subm_id):
     course = get_object_or_404(Course, pk=course_id)
     submission = get_object_or_404(Submission, pk=subm_id)
-    choices = submission.choices
+    choices = submission.choices.all()
     print('******'+ str(choices.values()))
 
     keys = ['question_text','submitted_anwser','is_correct','right_ansvers']
     response_object = []
     total_score = 0
     score = 0
-    for choice  in choices.choice.all():
+    for choice  in choices:
         answers = dict(zip(keys, [None]*len(keys)))
         actual_question =  questions.filter(choice__id = choice.id).question_content
         submitted_anwser = choice.choice_content
