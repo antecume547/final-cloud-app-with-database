@@ -128,11 +128,10 @@ def submit(request, course_id):
         return HttpResponseRedirect(reverse(viewname='onlinecourse:show_exam_result', args=(subm_id,course_id)))
        
 def show_exam_result(request,course_id, subm_id):
-    course = Course.objects.get(pk=course_id)
-    context = {'subm_id':subm_id,
-
-            'course': course} 
-
+    course = get_object_or_404(Course, pk=course_id)
+    subm = get_object_or_404(Enrollment, pk=subm_id)
+    context = {'course': course,
+            'subm':subm_id,} 
     template='onlinecourse/exam_result_bootstrap.html'
     return render(request, template, context)
 
