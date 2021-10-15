@@ -138,10 +138,9 @@ def show_exam_result(request,course_id, subm_id):
     total_score = 0
     score = 0
     for choice  in choices:
-        print(choice.choices)
         answers = dict(zip(keys, [None]*len(keys)))
         actual_question =  questions.filter(choice__id = choice.id)
-        submitted_anwser = choice.choices.id
+        submitted_anwser = choice.choices
         print(submitted_anwser)
 
         question_grade = actual_question.question_grade
