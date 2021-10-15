@@ -35,11 +35,8 @@
     </div>
 </nav>
 {{grade}}
-{% for  resp in response_object['question'] %}
+{% for  resp in response_object['answers']['question'] %}
 	{{resp}}
-	{% for answ in resp  %}
-		{{answ.question.question_content}}
-	{% endfor  %}
 	{% endfor  %}
 {{response_object}}
 <div class="container-fluid">
