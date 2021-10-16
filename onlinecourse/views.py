@@ -138,10 +138,14 @@ def show_exam_result(request,course_id, subm_id):
     total_score = 0
     score = 0
 
-    should_choose = []
-    shold_not_choose = []
+    
+    for question in questions:
+        choices_to_actual_question = questions.choice_set.filter(question_id = question.id).all()
+        print('choices_to_actual_question  --> ' + choices_to_actual_question.values())
+        correct_answers_to_actual_question = choices_to_actual_question.filter(correct = True).all()
+        print('correct_answers_to_actual_question --> ' + correct_answers_to_actual_question.values())
 
-    for choice  in choices:
+    for choice in choices:
         answers = dict(zip(keys, [None]*len(keys)))
         actual_question =  questions.get(choice__id = choice.id)
         submitted_anwsers_to_actual_question = choices.filter(question_id = actual_question.id).all()
