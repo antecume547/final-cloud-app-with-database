@@ -141,9 +141,9 @@ def show_exam_result(request,course_id, subm_id):
     
     for question in questions:
         choices_to_actual_question = question.choice_set.filter(question_id = question.id).all()
-        print('choices_to_actual_question  --> ' + choices_to_actual_question.values())
+        print('choices_to_actual_question  --> ' + str(choices_to_actual_question.values()))
         correct_answers_to_actual_question = choices_to_actual_question.filter(correct = True).all()
-        print('correct_answers_to_actual_question --> ' + correct_answers_to_actual_question.values())
+        print('correct_answers_to_actual_question --> ' + str(correct_answers_to_actual_question.values()))
 
     for choice in choices:
         answers = dict(zip(keys, [None]*len(keys)))
