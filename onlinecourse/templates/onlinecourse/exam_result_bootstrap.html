@@ -37,14 +37,19 @@
 {{grade}}%
 {% for resp in response_object %}
 {# The question  #}
+	{% if resp.is_succed == True %}
 Question		{{resp.question.question_content}}
 		{# The grade #}
 Point		{{resp.question.question_grade}}
 		<br>
 		{# The submitted_anwsers  #}
-	{% if resp.is_succed == True %}
 		CONGRAT
 	{% else %}
+Question		{{resp.question.question_content}}
+		{# The grade #}
+Point		{{resp.question.question_grade}}
+		<br>
+		{# The submitted_anwsers  #}
 
 		{% for rans in resp.right_ansvers %}
 
