@@ -54,8 +54,10 @@ CONGRAT
 {% else  %}
 WE ARE SORY...
 	{% for rigth in resp.right_ansvers %}
+	{{right.id}}
 		{% for ans in resp.submitted_anwsers %}
-			{% if ans.id == right.id %}
+		{{ans.id}}
+		{% if ans.id == right.id %}
 				YOUR CORRECT CHOICES:
 				<br>
 				{{ans.choice_content}}
