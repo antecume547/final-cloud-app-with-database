@@ -37,9 +37,8 @@
 {{grade}}
 {% for  resp in response_object %}
 +++	{{resp.question.question_content}}
-{{% for subm in resp.submitted_anwsers  %}}
+	{{resp.submitted_anwsers}}
 <br>
-{{subm.choice_content}}
 
 	{% endfor  %}
 	{% endfor  %}
