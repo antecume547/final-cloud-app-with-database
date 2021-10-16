@@ -157,7 +157,7 @@ def show_exam_result(request,course_id, subm_id):
         response_object.append(answers)
         total_score += question.question_grade   
 
-    grade = (total_score/100) * score
+    grade = score / (total_score/100)
 
     context = {'course': course,
             'grade' : grade,    
