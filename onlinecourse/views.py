@@ -121,7 +121,7 @@ def submit(request, course_id):
         subm = Submission(enrollment=enroll)
         subm.save()
         for id in answer_ids:
-            print('\n IDS: ', id)
+            #print('\n IDS: ', id)
             subm.choices.add(id)
             subm.save()
         return HttpResponseRedirect(reverse(viewname='onlinecourse:show_exam_result', args=(subm.id,course_id)))

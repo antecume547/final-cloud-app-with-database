@@ -119,7 +119,8 @@ class Question(models.Model):
     def is_get_score(self, selected_ids):
         all_answers = self.choice_set.filter(correct=True).count()
         selected_correct = self.choice_set.filter(correct=True, id__in=selected_ids).count()
-        if all_answers == selected_correct:
+        selected_all = self.choice_set.count()
+        if all_answers == selected_correct and all_answers == selected_all:
             return True
         else:
             return False
@@ -150,4 +151,4 @@ class Submission(models.Model):
     enrollment = models.ForeignKey(Enrollment, on_delete=models.CASCADE)
     choices = models.ManyToManyField(Choice)
 
-#    Other fields and methods you would like to design
+#    Other fields and methods you would like to destgn
