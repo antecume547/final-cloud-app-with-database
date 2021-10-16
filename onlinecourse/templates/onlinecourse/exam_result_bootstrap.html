@@ -76,25 +76,6 @@ SHOULD
 
 {% endif  %}
 {% endfor %}
-
-{% for rigth in resp.right_ansvers %}
-<br>	
-	++++	{{right.choice_content}}
-
-		{% if right in resp.submitted_anwsers %}
-		YOUR CORRECT CHOICE:
-		{{right.choice_content}}
-		{% else %}
-		YOU SHOULD HAVE ALSO CHOOSEN THESE
-		{{right.choice_content}}
-		{% endif  %}
-	{% endfor  %}
-	<br>
-{% endif  %}
-<br>
-
-	{% endfor  %}
-
 	{{ response_object}}
 <div class="container-fluid">
     {% if grade > 80 %}
