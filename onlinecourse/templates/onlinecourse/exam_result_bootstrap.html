@@ -60,8 +60,11 @@ SUBMITTION
 {% for rans in resp.right_ansvers %}
 RIGHT
 <br>
+{% if rans in resp.submitted_anwsers %}
+CORRECT
 {{rans.id}}
 {{rans.choice_content}}
+{% endif  %}
 {% endfor %}
 
 {% for rigth in resp.right_ansvers %}
