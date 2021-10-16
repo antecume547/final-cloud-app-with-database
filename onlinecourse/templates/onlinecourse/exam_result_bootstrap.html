@@ -52,8 +52,13 @@ CONGRAT
 WE ARE SORY...
 
 {% for ans in resp.submitted_anwsers %}
-{{ans}}
+{{ans.choice_content}}
 {% endfor  %}
+
+{% for rans in resp.right_ansvers %}
+{{rans.choice_content}}
+{% endfor %}
+
 {% for rigth in resp.right_ansvers %}
 <br>	
 		{{right}}
