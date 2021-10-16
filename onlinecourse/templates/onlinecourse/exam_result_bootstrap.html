@@ -84,10 +84,10 @@ SHOULD
 <br>
 	{% endfor  %}
 
-{% for ans in resp.submitted_anwsers %}
-{{ans.choice_content}}
+{% for subm  in resp.submitted_anwsers %}
+{{subm.choice_content}}
 SHOULD NOT CHOOSE
-{{ans.choice_content}}
+{{subm.choice_content}}
 {% endfor  %}
 
 	{{ response_object}}
