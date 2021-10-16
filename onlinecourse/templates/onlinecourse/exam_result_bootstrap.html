@@ -51,8 +51,8 @@
 	{% else %}
 
 	<div class="card-header bg-danger text-light"> Question </div>
-	<div class="card-text"><p class="text-danger">Failed:</p><p> {{resp.question.question_content}}</p>
-		 Point:{{resp.question.question_grade}}/0</div>
+	<div class="card-text"><p class="text-danger">Failed:</p><p> {{resp.question.question_content}}
+		 Point:{{resp.question.question_grade}}/0</p></div>
 		{# The submitted_anwsers  #}
 
 		{% for rans in resp.right_ansvers %}
@@ -71,6 +71,7 @@
 			{{subm.choice_content}}</li>
 		{% endif %}
 </ul>
+	</div>
 	</div>
 	{% endfor %}
 
