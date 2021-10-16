@@ -60,14 +60,6 @@ WE ARE SORY...
 				<br>
 				{{ans.choice_content}}
 
-			{% elif  ans.id != right.id  %}
-				<br>
-				YOU SHOULD HAVE NOT CHOOSE THESE:
-				{{right.choice_content}}
-			{% else  %}
-				<br>
-				YOU SHOULD HAVE CHOOSEN THESE ALSO
-				{{right.choice_content}}
 			{% endif %}
 	{{rigth.choice_content}}
 		{% endfor  %}
