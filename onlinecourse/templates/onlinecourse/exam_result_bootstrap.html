@@ -52,10 +52,14 @@ CONGRAT
 WE ARE SORY...
 
 {% for ans in resp.submitted_anwsers %}
+SUBMITTION 
+<br>
 {{ans.choice_content}}
 {% endfor  %}
 
 {% for rans in resp.right_ansvers %}
+RIGHT
+<br>
 {{rans.choice_content}}
 {% endfor %}
 
