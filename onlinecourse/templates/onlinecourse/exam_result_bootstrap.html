@@ -39,21 +39,26 @@
 
 <br>
 {% for  resp in response_object %}
-{% if resp.is_succed == True %}
-
-BINGO
-{% else  %}
-NOT
-{% endif  %}
-+++	{{resp.question.question_content}}
+{# The question  #}
+	{{resp.question.question_content}}
+	
 <br>
+{# The submitted_anwsers  #}
 	{% for ans in resp.submitted_anwsers %}
 	{{ans.choice_content}}
 <br>
+{% if resp.is_succed == True %}
 
+CONGRAT
+
+{% else  %}
+THESE ARE THE GOOD ANSWERS 
 	{% for rigth in resp.right_ansvers %}
 	{{rigth.choice_content}}
 	<br>
+{% endif  %}
+<br>
+
 	{% endfor  %}
 	{% endfor  %}
 	{% endfor  %}
