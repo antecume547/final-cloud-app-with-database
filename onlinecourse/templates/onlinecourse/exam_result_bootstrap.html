@@ -51,12 +51,12 @@ CONGRAT
 {% else  %}
 WE ARE SORY...
 	{% for rigth in resp.right_ansvers %}
-		{% for ans in resp.submitted_anwsers %}
+		{% for i  in resp.submitted_anwsers %}
 	{{right.id}} 
-		{% if ans.id == right.id %}
+		{% if ans.id[i].id == right.id %}
 				YOUR CORRECT CHOICES:
 				<br>
-				{{ans.choice_content}}
+				{{ans[i].choice_content}}
 
 			{% endif %}
 		{% endfor  %}
