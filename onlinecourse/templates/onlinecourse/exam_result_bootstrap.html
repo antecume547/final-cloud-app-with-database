@@ -50,6 +50,8 @@ CONGRAT
 
 {% else %}
 WE ARE SORY...
+{% comment %}
+
 SUBM:
 {% for ans in resp.submitted_anwsers %}
 
@@ -64,7 +66,7 @@ RIGHT ANSWS:
  - {{ans.choice_content}}
 {% endfor  %}
 <br>
-
+{% endcomment %}
 
 {% for rans in resp.right_ansvers %}
 {% if rans in resp.submitted_anwsers %}
