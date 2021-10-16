@@ -41,6 +41,8 @@
 {% for  resp in response_object %}
 {# The question  #}
 	{{resp.question.question_content}}
+
+	{{resp.question.question_grade}}
 	
 <br>
 {# The submitted_anwsers  #}
@@ -72,12 +74,11 @@ RIGHT ANSWS:
 
 {% if rans in resp.submitted_anwsers %}
 <br>
-CORRECT
-{{rans.id}} - 
+Correct ansver:
 {{rans.choice_content}}/
 {% else %}
 <br>
-SHOULD
+Should have been also chosen: 
 {{rans.id}} -
 {{rans.choice_content}}/
 <br>
@@ -86,7 +87,7 @@ SHOULD
 
 {% for subm  in resp.submitted_anwsers %}
 {% if subm not in resp.right_ansvers  %}
-SHOULD NOT CHOOSE:
+Should have not been chosen: 
 {{subm.choice_content}}
 <br>
 {% endif %}
