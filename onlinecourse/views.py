@@ -141,9 +141,9 @@ def show_exam_result(request,course_id, subm_id):
     
     for question in questions:
         choices_to_actual_question = question.choice_set.filter(question_id = question.id).all()
-        print('choices_to_actual_question  --> ' + str(choices_to_actual_question.values()))
+        print('\n choices_to_actual_question  --> ' + str(choices_to_actual_question.values()))
         correct_answers_to_actual_question = choices_to_actual_question.filter(correct = True).all()
-        print('correct_answers_to_actual_question --> ' + str(correct_answers_to_actual_question.values()))
+        print('\n correct_answers_to_actual_question --> ' + str(correct_answers_to_actual_question.values()))
         r =  question.is_get_score(choices_to_actual_question)
         print ('succed -->' + str(r))
 
@@ -152,7 +152,7 @@ def show_exam_result(request,course_id, subm_id):
         actual_question =  questions.get(choice__id = choice.id)
         submitted_anwsers_to_actual_question = choices.filter(question_id = actual_question.id).all()
         question_grade = actual_question.question_grade 
-        print ('\n++++++++ ' + str(submitted_anwsers_to_actual_question.values()))
+        #print ('\n++++++++ ' + str(submitted_anwsers_to_actual_question.values()))
         
         #get the submitted_anwsers
         submitted_anwsers = []
