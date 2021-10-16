@@ -119,7 +119,7 @@ class Question(models.Model):
     def is_get_score(self, selected_ids):
         all_answers = self.choice_set.filter(correct=True).count()
         selected_correct = self.choice_set.filter(correct=True, id__in=selected_ids).count()
-        selected_all = len.self.choice_set
+        selected_all = self.choice_set.count()
         print ('\n all_answers:' +  all_answers + 'selected_all'  +  selected_all + 'selected_correct'  + selected_correct  )
         if all_answers == selected_correct and all_answers == selected_all:
             return True
