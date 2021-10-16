@@ -36,15 +36,15 @@
 </nav>
 {{grade}}%
 <br>
-{% if response_object.is_succed %}
+
+<br>
+{% for  resp in response_object %}
+{% if resp.is_succed %}
 
 BINGO
 {% else  %}
 NOT
 {% endif  %}
-
-<br>
-{% for  resp in response_object %}
 +++	{{resp.question.question_content}}
 <br>
 	{% for ans in resp.submitted_anwsers %}
