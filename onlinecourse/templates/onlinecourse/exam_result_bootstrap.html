@@ -44,9 +44,6 @@
 	
 <br>
 {# The submitted_anwsers  #}
-	{% for ans in resp.submitted_anwsers %}
-	{{ans.choice_content}}
-<br>
 {% if resp.is_succed == True %}
 
 CONGRAT
@@ -54,9 +51,8 @@ CONGRAT
 {% else  %}
 WE ARE SORY...
 	{% for rigth in resp.right_ansvers %}
-	{{right.id}}
 		{% for ans in resp.submitted_anwsers %}
-		{{ans.id}}
+	{{right.id}}---{{ans.id}}
 		{% if ans.id == right.id %}
 				YOUR CORRECT CHOICES:
 				<br>
