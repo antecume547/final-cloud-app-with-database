@@ -50,16 +50,16 @@ CONGRAT
 
 {% else  %}
 WE ARE SORY...
-	{% for rigth in resp.right_ansvers %}
-		{% for ans in resp.submitted_anwsers %}
-		{{right.id}} } 
-		{% if ans.id == right.id %}
-				YOUR CORRECT CHOICES:
-				<br>
-				{{ans.choice_content}}
+	
 
-			{% endif %}
-		{% endfor  %}
+{% for rigth in resp.right_ansvers %}
+		{% if right in resp.submitted_anwsers %}
+		YOUR CORRECT CHOICE:
+		{{right.choice_content}}
+		{% else %}
+		YOU SHOULD HAVE ALSO CHOOSEN THESE
+		{{right.choice_content}}
+		{% endif  %}
 	{% endfor  %}
 	<br>
 {% endif  %}
