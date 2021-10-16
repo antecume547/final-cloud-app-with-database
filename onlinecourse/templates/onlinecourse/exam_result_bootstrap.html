@@ -35,14 +35,11 @@
     </div>
 </nav>
 {{grade}}%
-<br>
-
-<br>
 {% for resp in response_object %}
 {# The question  #}
-		{{resp.question.question_content}}
+Question		{{resp.question.question_content}}
 		{# The grade #}
-		{{resp.question.question_grade}}
+Point		{{resp.question.question_grade}}
 		<br>
 		{# The submitted_anwsers  #}
 	{% if resp.is_succed == True %}
