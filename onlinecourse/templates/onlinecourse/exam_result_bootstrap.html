@@ -37,9 +37,11 @@
 {{grade}}
 {% for  resp in response_object %}
 +++	{{resp.question.question_content}}
-	{{resp.submitted_anwsers}}
+	{% for ans in resp.submitted_anwsers %}
+	{{ans.choice_content}}
 <br>
 
+	{% endfor  %}
 	{% endfor  %}
 
 	{{ response_object}}
