@@ -84,10 +84,8 @@ SHOULD
 <br>
 	{% endfor  %}
 
-
-
 	{% for ans in resp.submitted_anwsers %}
-
+	{{ans.choice_content}}
 	{% if ans not in resp.right_ansvers  %}
 
 	SHOULD NOT CHOOSE
