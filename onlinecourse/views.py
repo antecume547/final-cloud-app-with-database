@@ -145,7 +145,7 @@ def show_exam_result(request,course_id, subm_id):
         correct_answers_to_actual_question = choices_to_actual_question.filter(correct = True).all()
         print('\n correct_answers_to_actual_question --> ' + str(correct_answers_to_actual_question.values()))
         submit_anwsers_to_actual_question = choices.filter(question_id = question.id).all()
-        print('\n correct_answers_to_actual_question --> ' + str(submit_anwsers_to_actual_question.values()))
+        print('\n submit_anwsers_to_actual_question --> ' + str(submit_anwsers_to_actual_question.values()))
         
         r = question.is_get_score(submit_anwsers_to_actual_question)
 
