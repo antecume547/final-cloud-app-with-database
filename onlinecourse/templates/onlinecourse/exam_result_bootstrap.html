@@ -79,16 +79,16 @@ SHOULD
 {{rans.choice_content}}/
 
 {% endif  %}
-{% endfor %}
-{% endif  %}
-<br>
-	{% endfor  %}
-
 {% for subm  in resp.submitted_anwsers %}
 {{subm.choice_content}}
 SHOULD NOT CHOOSE
 {{subm.choice_content}}
 {% endfor  %}
+{% endfor %}
+{% endif  %}
+<br>
+	{% endfor  %}
+
 
 	{{ response_object}}
 <div class="container-fluid">
