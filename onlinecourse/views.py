@@ -137,6 +137,9 @@ def show_exam_result(request,course_id, subm_id):
     total_score = 0
     score = 0
 
+    should_choose = []
+    shold_not_choose = []
+
     for choice  in choices:
         answers = dict(zip(keys, [None]*len(keys)))
         actual_question =  questions.get(choice__id = choice.id)
@@ -160,6 +163,7 @@ def show_exam_result(request,course_id, subm_id):
             right_ansvers_to_actual_question = []
             for answ in actual_question.choice_set.filter(correct = True ).all():
                 right_ansvers_to_actual_question.append(answ)
+
             answers['right_ansvers'] = right_ansvers_to_actual_question
         
         answers['question'] = actual_question 
