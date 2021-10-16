@@ -52,9 +52,25 @@
 CONGRAT
 
 {% else  %}
-THESE ARE THE GOOD ANSWERS 
+WE ARE SORY...
 	{% for rigth in resp.right_ansvers %}
+		{% for ans in resp.submitted_anwsers %}
+			{% if ans.id == right.id %}
+				YOUR CORRECT CHOICES:
+				<br>
+				{{ans.choice_content}}
+
+			{% else if  ans.id != right.id  %}
+				<br>
+				YOU SHOULD HAVE NOT CHOOSE THESE:
+				{{right.choice_content}}
+			{% else  %}
+				<br>
+				YOU SHOULD HAVE CHOOSEN THESE ALSO
+				{{right.choice_content}}
+			{% endif %}
 	{{rigth.choice_content}}
+		{% endfor  %}
 	{% endfor  %}
 	<br>
 {% endif  %}
