@@ -140,17 +140,32 @@ def show_exam_result(request,course_id, subm_id):
 
     
     for question in questions:
-        choices_to_actual_question = question.choice_set.filter(question_id = question.id).all()
-        print('\n choices_to_actual_question  --> ' + str(choices_to_actual_question.values()))
-        correct_answers_to_actual_question = choices_to_actual_question.filter(correct = True).all()
-        print('\n correct_answers_to_actual_question --> ' + str(correct_answers_to_actual_question.values()))
-        submit_anwsers_to_actual_question = choices.filter(question_id = question.id).all()
-        print('\n submit_anwsers_to_actual_question --> ' + str(submit_anwsers_to_actual_question.values()))
+        answers = dict(zip(keys, [None]*len(keys)))
+        answers['question'] = question.question_content 
+
+        #choices_to_actual_question = question.choice_set.filter(question_id = question.id).all()
+        #print('\n choices_to_actual_question  --> ' + str(choices_to_actual_question.values()))
+        #correct_answers_to_actual_question = choices_to_actual_question.filter(correct = True).all()
+        #print('\n correct_answers_to_actual_question --> ' + str(correct_answers_to_actual_question.values()))
+        answers['submitted_anwsers'] = choices.filter(question_id = question.id).all()
         
-        r = question.is_get_score(submit_anwsers_to_actual_question)
+        check = question.is_get_score(answers['submitted_anwsers'])
 
-        print ('succed -->' + str(r))
+        if check == True:
+            answers['is_succed'] = True
+            answers['right_ansvers'] = None
+            score += question.question_grade
+        else:
+            answers['is_succed'] = False
+            answers['right_ansvers'] =  question.choice_set.filter(question_id = question.id, correct = True).all()
 
+        response_object.append(answers)
+        total_score =+ question.question_grade   
+
+        
+
+
+"""
     for choice in choices:
         answers = dict(zip(keys, [None]*len(keys)))
         actual_question =  questions.get(choice__id = choice.id)
@@ -177,8 +192,7 @@ def show_exam_result(request,course_id, subm_id):
         answers['submitted_anwsers'] = submitted_anwsers_to_actual_question
         response_object.append(answers)
         total_score =+ question_grade   
-
-    print(answers)
+"""
     grade = (total_score/100) * score
                 
 
