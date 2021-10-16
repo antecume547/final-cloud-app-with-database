@@ -34,7 +34,10 @@
         </ul>
     </div>
 </nav>
-{{grade}}
+{{grade}}%
+<br>
+{{response_object.is_succed}}
+<br>
 {% for  resp in response_object %}
 +++	{{resp.question.question_content}}
 <br>
