@@ -40,11 +40,11 @@
 <br>
 {% for  resp in response_object %}
 {# The question  #}
-	{{resp.question.question_content}}
-	{# The grade #}
-	{{resp.question.question_grade}}
-<br>
-{# The submitted_anwsers  #}
+		{{resp.question.question_content}}
+		{# The grade #}
+		{{resp.question.question_grade}}
+		<br>
+		{# The submitted_anwsers  #}
 	{% if resp.is_succed == True %}
 		CONGRAT
 	{% else %}
