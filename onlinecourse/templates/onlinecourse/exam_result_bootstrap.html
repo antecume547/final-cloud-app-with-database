@@ -80,9 +80,10 @@ SHOULD
 
 {% endif  %}
 {% for subm  in resp.submitted_anwsers %}
+{% if subm not in resp.right_ansvers  %}
+SHOULD NOT CHOOSE:
 {{subm.choice_content}}
-SHOULD NOT CHOOSE
-{{subm.choice_content}}
+<br>
 {% endfor  %}
 {% endfor %}
 {% endif  %}
