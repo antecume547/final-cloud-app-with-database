@@ -41,62 +41,39 @@
 {% for  resp in response_object %}
 {# The question  #}
 	{{resp.question.question_content}}
-
+	{# The grade #}
 	{{resp.question.question_grade}}
-	
 <br>
 {# The submitted_anwsers  #}
-{% if resp.is_succed == True %}
+	{% if resp.is_succed == True %}
+		CONGRAT
+	{% else %}
 
-CONGRAT
+		{% for rans in resp.right_ansvers %}
 
-{% else %}
-WE ARE SORY...
-{% comment %}
+			{% if rans in resp.submitted_anwsers %}
+				<br>
+				Correct ansver:
+				{{rans.choice_content}}/
+			{% else %}
+				<br>
+				Should have been also chosen: 
+				{{rans.choice_content}}
+				<br>
+			{% endif  %}
+		{% endfor  %}
 
-SUBM:
-{% for ans in resp.submitted_anwsers %}
+		{% for subm  in resp.submitted_anwsers %}
+			{% if subm not in resp.right_ansvers  %}
+				Should have not been chosen: 
+				{{subm.choice_content}}
+				<br>
+			{% endif %}
+		{% endfor %}
 
- - {{ans.choice_content}}
+	{% endif  %}
+
 {% endfor  %}
-<br>
-RIGHT ANSWS:
-
-
-
-{% for ans in resp.right_ansvers %}
- - {{ans.choice_content}}
-{% endfor  %}
-<br>
-{% endcomment %}
-
-{% for rans in resp.right_ansvers %}
-
-{% if rans in resp.submitted_anwsers %}
-<br>
-Correct ansver:
-{{rans.choice_content}}/
-{% else %}
-<br>
-Should have been also chosen: 
-{{rans.id}} -
-{{rans.choice_content}}/
-<br>
-{% endif  %}
-{% endfor  %}
-
-{% for subm  in resp.submitted_anwsers %}
-{% if subm not in resp.right_ansvers  %}
-Should have not been chosen: 
-{{subm.choice_content}}
-<br>
-{% endif %}
-{% endfor %}
-
-
-		{% endif  %}
-<br>
-			{% endfor  %}
 
 
 	{{ response_object}}
