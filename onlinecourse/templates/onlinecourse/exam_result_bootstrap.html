@@ -52,9 +52,9 @@ CONGRAT
 WE ARE SORY...
 	
 
-{% for rigth in resp.right_ansvers %}
-	
-		{{right[0]}}
+{% for key, value in resp.right_ansvers %}
+{{key}} --- {{value}}	
+		{{right}}
 		{% if right in resp.submitted_anwsers %}
 		YOUR CORRECT CHOICE:
 		{{right.choice_content}}
