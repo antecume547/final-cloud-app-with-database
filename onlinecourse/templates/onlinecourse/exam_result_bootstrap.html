@@ -40,19 +40,18 @@
 {% for resp in response_object %}
 {# The question  #}
 	{% if resp.is_succed == True %}
-	<div class="card-header bg-success text-light"> Question </div>
+	<div class="card-header bg-success text-white"> Question </div>
 	<div class="card-text">{{resp.question.question_content}} 
 		 Point:{{resp.question.question_grade}}/{{resp.question.question_grade}}</div>
 	<ul class="list-group">
 		 {% for ans in resp.submitted_anwsers  %}
 		<li class="list-group-item">{{ans.choice_content}}</li>
 	</ul>
-	</div>
 			{% endfor  %}
 	{% else %}
 
 	<div class="card-header bg-danger text-light"> Question </div>
-	<div class="card-text"><p class="text-danger">Failed{{resp.question.question_content}}</p>
+	<div class="card-text"><p class="text-danger">Failed:</p><p> {{resp.question.question_content}}</p>
 		 Point:{{resp.question.question_grade}}/0</div>
 		{# The submitted_anwsers  #}
 
@@ -68,10 +67,11 @@
 
 	{% for subm  in resp.submitted_anwsers %}
 		{% if subm not in resp.right_ansvers  %}
-		<li class="list-group-item"><p class="text-muted"> have not been chosen:</p>
+		<li class="list-group-item"><p class="text-muted">Should have not been chosen:</p>
 			{{subm.choice_content}}</li>
 		{% endif %}
 </ul>
+	</div>
 	{% endfor %}
 
 {% endif  %}
