@@ -144,9 +144,12 @@ def show_exam_result(request,course_id, subm_id):
         print('\n choices_to_actual_question  --> ' + str(choices_to_actual_question.values()))
         correct_answers_to_actual_question = choices_to_actual_question.filter(correct = True).all()
         print('\n correct_answers_to_actual_question --> ' + str(correct_answers_to_actual_question.values()))
+        submit_anwsers_to_actual_question = choices.filter(question_id = question.id).all()
+        print('\n correct_answers_to_actual_question --> ' + str(correct_answers_to_actual_question.values()))
+        
         check_set = []
-        for choice in choices_to_actual_question.all():check_set.append(choice.id)   
-        r = question.is_get_score(check_set)
+        for choice in submit_anwsers_to_actual_question:check_set.append(choice.id)   
+        r = question.is_get_score(submit_anwsers_to_actual_question)
 
         print ('succed -->' + str(r))
 
