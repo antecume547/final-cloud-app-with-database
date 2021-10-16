@@ -64,12 +64,14 @@ RIGHT ANSWS:
 <br>
 {% for rans in resp.right_ansvers %}
 {% if rans in resp.submitted_anwsers %}
+<br>
 CORRECT
-{{rans.id}}
+{{rans.id}} - 
 {{rans.choice_content}}/
 {% else %}
+<br>
 SHOULD
-{{rans.id}}-
+{{rans.id}} -
 {{rans.choice_content}}/
 
 {% endif  %}
