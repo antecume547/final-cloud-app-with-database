@@ -58,10 +58,14 @@ SUBM:
 <br>
 RIGHT ANSWS:
 
+
+
 {% for ans in resp.right_ansvers %}
  - {{ans.choice_content}}
 {% endfor  %}
 <br>
+
+
 {% for rans in resp.right_ansvers %}
 {% if rans in resp.submitted_anwsers %}
 <br>
@@ -78,6 +82,16 @@ SHOULD
 {% endfor %}
 {% endif  %}
 <br>
+	{% endfor  %}
+
+
+
+	{% for ans in resp.submitted_anwsers %}
+
+	{% if ans not in resp.right_ansvers  %}
+
+	SHOULD NOT CHOOSE
+	{{ans.choice_content}}
 
 	{% endfor  %}
 
