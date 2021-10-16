@@ -172,36 +172,6 @@ def show_exam_result(request,course_id, subm_id):
     return render(request, template, context)
 
 
-"""
-    for choice in choices:
-        answers = dict(zip(keys, [None]*len(keys)))
-        actual_question =  questions.get(choice__id = choice.id)
-        submitted_anwsers_to_actual_question = choices.filter(question_id = actual_question.id).all()
-        question_grade = actual_question.question_grade 
-        #print ('\n++++++++ ' + str(submitted_anwsers_to_actual_question.values()))
-        
-        #get the submitted_anwsers
-        submitted_anwsers = []
-        for answ in submitted_anwsers_to_actual_question.all():
-            submitted_anwsers.append(answ.id)
-        
-
-        if  actual_question.is_get_score(submitted_anwsers) == True:
-            answers['is_succed'] = True
-            answers['right_ansvers'] = None
-            score + question_grade
-        else:
-            #get the correct answers
-            answers['is_succed'] = False
-            answers['right_ansvers'] = actual_question.choice_set.filter(correct = True ).all()
-
-        answers['question'] = actual_question 
-        answers['submitted_anwsers'] = submitted_anwsers_to_actual_question
-        response_object.append(answers)
-        total_score =+ question_grade   
-"""
-
-
     
 
    # for key in request.POST:
