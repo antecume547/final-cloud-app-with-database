@@ -142,10 +142,6 @@ def show_exam_result(request,course_id, subm_id):
     for question in questions:
         answers = dict(zip(keys, [None]*len(keys)))
         answers['question'] = question.question_content 
-        #choices_to_actual_question = question.choice_set.filter(question_id = question.id).all()
-        #print('\n choices_to_actual_question  --> ' + str(choices_to_actual_question.values()))
-        #correct_answers_to_actual_question = choices_to_actual_question.filter(correct = True).all()
-        #print('\n correct_answers_to_actual_question --> ' + str(correct_answers_to_actual_question.values()))
         answers['submitted_anwsers'] = choices.filter(question_id = question.id).all()
         
         check = question.is_get_score(answers['submitted_anwsers'])
@@ -159,10 +155,9 @@ def show_exam_result(request,course_id, subm_id):
             answers['right_ansvers'] =  question.choice_set.filter(question_id = question.id, correct = True).all()
 
         response_object.append(answers)
-        total_score =+ question.question_grade   
+        total_score += question.question_grade   
 
     grade = (total_score/100) * score
-                
 
     context = {'course': course,
             'grade' : grade,    
