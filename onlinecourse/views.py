@@ -123,7 +123,7 @@ def submit(request, course_id):
     if request.method == 'POST':
         user = request.user.id 
         answer_ids = get_answers(request)
-        enroll = Enrollment.objects.get(user=user)
+        enroll = Enrollment.objects.filter(user=user, course=course_id)
         subm = Submission(enrollment=enroll)
         subm.save()
         for id in answer_ids:
