@@ -42,7 +42,11 @@ SHOWN
 	{% if grade > 80 %}
     <div class="alert alert-success">
        <!--HINT Display passed info -->
-       Congratulations, {{user.first_name}}! You have passed the exam and completed successfully the course with score {{grade}}/100.
+       Congratulations
+	{% if user.first_name not None  %}
+       , {{user.first_name}}
+       {% endif  %}
+       ! You have passed the exam and completed successfully the course with score {{grade}}/100.
     </div>
         {% else %}
         <div class="alert alert-danger">
