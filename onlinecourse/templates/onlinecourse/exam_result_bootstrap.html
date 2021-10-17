@@ -81,7 +81,7 @@ Sorry{% if user.first_name != ''  %}
 <div class="card mt-1 mb-3">
 	<div class="card-body">
 	<div class="card-header bg-danger text-light"> Failed </div>
-	<div class="card-title my-2 ml-3">{{forloop.counter}}.{{resp.question.question_content}} - Point: 0/{{resp.question.question_grade}}</div>
+	<div class="card-title my-2 ml-3">{{forloop.counter}}. {{resp.question.question_content}} - Point: 0/{{resp.question.question_grade}}</div>
 		{# The submitted_anwsers  #}
 	<ul class="list group">
 		{% for rans in resp.right_ansvers %}

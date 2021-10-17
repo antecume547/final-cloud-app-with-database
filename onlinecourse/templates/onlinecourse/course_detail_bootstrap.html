@@ -71,7 +71,7 @@
 		{% for question in course.question_set.all %}
 		    <div class="card mb-3">
 		    <div class="card-header bg-light py-3">
-		{{question.question_content}}
+	{{forloop.counter}}. {{question.question_content}}
 		    </div>
 		    <div class="card-body">
 		<ul class="list-group list-group">
