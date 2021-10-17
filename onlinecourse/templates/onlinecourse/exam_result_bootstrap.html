@@ -41,7 +41,7 @@
 <div class="card mt-1 mb-3">
 	<div class="card-body">
 	<div class="card-header bg-success text-white"> Succeed </div>
-	<div class="card-title my-2 ml-3">{{resp.question.question_content}} - Point: {{resp.question.question_grade}}/{{resp.question.question_grade}}</div>
+	<div class="card-title bg-light my-2 ml-3">{{resp.question.question_content}} - Point: {{resp.question.question_grade}}/{{resp.question.question_grade}}</div>
 	<ul class="list-group">
 		 {% for ans in resp.submitted_anwsers  %}
 		<li class="list-group-item"><p class="text-success">Correct: </p>{{ans.choice_content}}</li>
@@ -54,7 +54,7 @@
 <div class="card mt-1 mb-3">
 	<div class="card-body">
 	<div class="card-header bg-danger text-light"> Failed </div>
-	<div class="card-title my-2 ml-3">{{resp.question.question_content}} - Point: {{resp.question.question_grade}}/0</div>
+	<div class="card-title bg-light my-2 ml-3">{{resp.question.question_content}} - Point: {{resp.question.question_grade}}/0</div>
 		{# The submitted_anwsers  #}
 	<ul class="list group">
 		{% for rans in resp.right_ansvers %}
