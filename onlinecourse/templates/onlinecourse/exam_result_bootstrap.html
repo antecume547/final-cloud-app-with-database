@@ -37,9 +37,9 @@
 {{grade}}%
 {% for resp in response_object %}
 {# The question  #}
+	{% if resp.is_succed == True %}
 <div class="card">
 	<div class="card-body">
-	{% if resp.is_succed == True %}
 	<div class="card-header bg-success text-white"> Question </div>
 	<div class="card-text">{{resp.question.question_content}} - Point:{{resp.question.question_grade}}/{{resp.question.question_grade}}</div>
 	<ul class="list-group">
