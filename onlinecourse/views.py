@@ -103,20 +103,26 @@ def enroll(request, course_id):
 
     return HttpResponseRedirect(reverse(viewname='onlinecourse:course_details', args=(course.id,)))
 
-def get_ansvers(request):
-    submitted_anwsers = []
+def get_answers(request):
+    """
+    Function to gather the form's input values by name: 'choice' 
+    """
+    submitted_answers = []
     for key in request.POST:
         if key.startswith('choice'):
             value = request.POST[key]
             choice_id = int(value)
-            submitted_anwsers.append(choice_id)
-    return submitted_anwsers
+            submitted_answers.append(choice_id)
+    return submitted_answers
 
 def submit(request, course_id):
+    """
+    It creates a new Submission and adds the gathered answers to it. Return a redirect to show_exam_result method.
+    """
     
     if request.method == 'POST':
         user = request.user.id 
-        answer_ids = get_ansvers(request)
+        answer_ids = get_answers(request)
         enroll = Enrollment.objects.get(user=user)
         subm = Submission(enrollment=enroll)
         subm.save()
@@ -127,13 +133,16 @@ def submit(request, course_id):
         return HttpResponseRedirect(reverse(viewname='onlinecourse:show_exam_result', args=(subm.id,course_id)))
        
 def show_exam_result(request,course_id, subm_id):
+    """
+    The function checks correctness of the answers that have been submitted to the actual Submission (got by Enrollment id). It adds a list of dictionaries to the context. In each dictionary,  are the question, the submitted answers, the correct answers (QuerySets) and the task result (per question). It return the rendered template.
+    """
     course = get_object_or_404(Course, pk=course_id)
     submission = get_object_or_404(Submission, pk=subm_id)
     questions = Question.objects.filter(course=course.id)
     choices = submission.choices.all()
     print('******'+ str(choices.values()))
 
-    keys = ['question','submitted_anwsers','right_ansvers','is_succed',]
+    keys = ['question','submitted_answers','right_answers','is_succeed',]
     response_object = []
     total_score = 0
     score = 0
@@ -142,17 +151,17 @@ def show_exam_result(request,course_id, subm_id):
     for question in questions:
         answers = dict(zip(keys, [None]*len(keys)))
         answers['question'] = question 
-        answers['submitted_anwsers'] = choices.filter(question_id = question.id).all()
+        answers['submitted_answers'] = choices.filter(question_id = question.id).all()
         
-        check = question.is_get_score(answers['submitted_anwsers'])
+        check = question.is_get_score(answers['submitted_answers'])
 
         if check == True:
-            answers['is_succed'] = True
-            answers['right_ansvers'] = None
+            answers['is_succeed'] = True
+            answers['right_answers'] = None
             score += question.question_grade
         else:
-            answers['is_succed'] = False
-            answers['right_ansvers'] =  question.choice_set.filter(question_id = question.id, correct = True).all()
+            answers['is_succeed'] = False
+            answers['right_answers'] =  question.choice_set.filter(question_id = question.id, correct = True).all()
 
         response_object.append(answers)
         total_score += question.question_grade   
@@ -193,13 +202,13 @@ def show_exam_result(request,course_id, subm_id):
 
 # <HINT> A example method to collect the selected choices from the exam form from the request object
 #def extract_answers(request):
-#    submitted_anwsers = []
+#    submitted_answers = []
 #    for key in request.POST:
 #        if key.startswith('choice'):
 #            value = request.POST[key]
 #            choice_id = int(value)
-#            submitted_anwsers.append(choice_id)
-#    return submitted_anwsers
+#            submitted_answers.append(choice_id)
+#    return submitted_answers
 
 
 # <HINT> Create an exam result view to check if learner passed exam and show their question results and result for each question,

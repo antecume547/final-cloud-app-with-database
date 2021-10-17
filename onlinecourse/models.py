@@ -117,6 +117,10 @@ class Question(models.Model):
 
     # <HINT> A sample model method to calculate if learner get the score of the question
     def is_get_score(self, selected_ids):
+        """
+        Function for check if the submitted answers are correct and if the user has not submitted wrong choice.  
+        Return bool value.
+        """
         all_answers = self.choice_set.filter(correct=True).count()
         selected_correct = self.choice_set.filter(correct=True, id__in=selected_ids).count()
         selected_all = self.choice_set.filter(id__in=selected_ids).count()
