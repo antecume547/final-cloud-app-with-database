@@ -68,9 +68,9 @@
 	{% for subm  in resp.submitted_anwsers %}
 		{% if subm not in resp.right_ansvers  %}
 		<li class="list-group-item"><p class="text-muted">Should have not been chosen:</p>
-			{{subm.choice_content}}</li>
-		{% endif %}
+			<p>{{subm.choice_content}}</p></li>
 </ul>
+		{% endif %}
 	</div>
 	</div>
 	{% endfor %}
