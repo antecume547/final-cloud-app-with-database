@@ -61,7 +61,7 @@
 			{% if rans in resp.submitted_anwsers %}
 			<li class="list-group-item"><p class="text-success">Correct: </p><p>{{rans.choice_content}}</p></li>
 		{% else %}
-		<li class="list-group-item">	<p class="text-danger">Should have been chosen:</p> 
+		<li class="list-group-item">	<p class="text-info">Should have been chosen:</p> 
 			<p>{{rans.choice_content}}</p></li>
 		{% endif %}
 	{% endfor %}
