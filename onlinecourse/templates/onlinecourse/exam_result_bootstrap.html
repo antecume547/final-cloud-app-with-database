@@ -43,7 +43,7 @@ SHOWN
     <div class="alert alert-success">
        <!--HINT Display passed info -->
        Congratulations
-	{% if user.first_name not None  %}
+	{% if user.first_name != None  %}
        , {{user.first_name}}
        {% endif  %}
        ! You have passed the exam and completed successfully the course with score {{grade}}/100.
