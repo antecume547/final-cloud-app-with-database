@@ -41,7 +41,7 @@
 {# The question  #}
 	{% if resp.is_succed == True %}
 	<div class="card-header bg-success text-white"> Question </div>
-	<div class="card-text">{{resp.question.question_content}} 
+	<div class="card-text"><p class="text-success">Correct: </p><{{resp.question.question_content}} 
 		 Point:{{resp.question.question_grade}}/{{resp.question.question_grade}}</div>
 	<ul class="list-group">
 		 {% for ans in resp.submitted_anwsers  %}
@@ -51,19 +51,21 @@
 	{% else %}
 
 	<div class="card-header bg-danger text-light"> Question </div>
-	<div class="card-text"><p class="text-danger">Failed:</p><p> {{resp.question.question_content}}
+	<div class="card-text"><p class="text-danger">Failed:</p><p>{{resp.question.question_content}}
 		Point:{{resp.question.question_grade}}/0</p></div>
 		{# The submitted_anwsers  #}
 	<ul class="list group">
 		{% for rans in resp.right_ansvers %}
 			{% if rans in resp.submitted_anwsers %}
-			<li class="list-group-item"><p class="text-succes">Correct: </p><p>{{rans.choice_content}}</p></li>
+			<li class="list-group-item"><p class="text-success">Correct: </p><p>{{rans.choice_content}}</p></li>
 		{% else %}
 		<li class="list-group-item">	<p class="text-primary">Should have been also chosen:</p> 
 			<p>{{rans.choice_content}}</p></li>
 		{% endif  %}
+	</ul>
 	{% endfor  %}
 
+	<ul class="list group">
 	{% for subm  in resp.submitted_anwsers %}
 		{% if subm not in resp.right_ansvers  %}
 		<li class="list-group-item"><p class="text-muted">Should have not been chosen:</p>
