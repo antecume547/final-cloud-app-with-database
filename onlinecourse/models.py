@@ -3,7 +3,7 @@ from django.utils.timezone import now
 try:
     from django.db import models
 except Exception:
-    print("There was an error loading django modules. Do you have django installed?")
+
     sys.exit()
 
 from django.conf import settings
@@ -124,7 +124,7 @@ class Question(models.Model):
         all_answers = self.choice_set.filter(correct=True).count()
         selected_correct = self.choice_set.filter(correct=True, id__in=selected_ids).count()
         selected_all = self.choice_set.filter(id__in=selected_ids).count()
-        print ('\n all_answers:' +  str(all_answers) + 'selected_all'  + str(selected_all) + 'selected_correct'  + str(selected_correct))
+
         if all_answers == selected_correct and all_answers == selected_all:
             return True
         else:

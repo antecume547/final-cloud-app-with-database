@@ -127,7 +127,7 @@ def submit(request, course_id):
         subm = Submission(enrollment=enroll)
         subm.save()
         for id in answer_ids:
-            #print('\n IDS: ', id)
+
             subm.choices.add(id)
             subm.save()
         return HttpResponseRedirect(reverse(viewname='onlinecourse:show_exam_result', args=(subm.id,course_id)))
@@ -140,7 +140,7 @@ def show_exam_result(request,course_id, subm_id):
     submission = get_object_or_404(Submission, pk=subm_id)
     questions = Question.objects.filter(course=course.id)
     choices = submission.choices.all()
-    print('******'+ str(choices.values()))
+
 
     keys = ['question','submitted_answers','right_answers','is_succeed',]
     response_object = []
