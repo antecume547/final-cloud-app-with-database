@@ -60,10 +60,7 @@
 		<li class="list-group-item">	<p class="text-primary">Should have been also chosen:</p> 
 			<p>{{rans.choice_content}}</p></li>
 		{% endif  %}
-	</ul>
 	{% endfor  %}
-
-	<ul class="list group">
 	{% for subm  in resp.submitted_anwsers %}
 		{% if subm not in resp.right_ansvers  %}
 		<li class="list-group-item"><p class="text-muted">Should have not been chosen:</p>
