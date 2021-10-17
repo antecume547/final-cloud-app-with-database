@@ -67,7 +67,7 @@ Sorry{% if user.first_name != ''  %}
 	{% if resp.is_succed == True %}
 <div class="card mt-1 mb-3">
 	<div class="card-body">
-	<div class="card-header bg-success text-white"> Succeed </div>
+		<div class="card-header bg-success text-white"> Succeed{{forloop.counter}} </div>
 	<div class="card-title my-2 ml-3">{{resp.question.question_content}} - Point: {{resp.question.question_grade}}/{{resp.question.question_grade}}</div>
 	<ul class="list-group">
 		 {% for ans in resp.submitted_anwsers  %}
