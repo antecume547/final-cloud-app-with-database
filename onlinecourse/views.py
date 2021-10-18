@@ -134,7 +134,9 @@ def submit(request, course_id):
        
 def show_exam_result(request,course_id, subm_id):
     """
-    The function checks correctness of the answers that have been submitted to the actual Submission (got by Enrollment id). It adds a list of dictionaries to the context. In each dictionary,  are the question, the submitted answers, the correct answers (QuerySets) and the task result (per question). It return the rendered template.
+    The function checks correctness of the answers that have been submitted to the actual Submission (got by Enrollment id).
+    It adds a list of dictionaries to the context. In each dictionary,  are the question, the submitted answers,
+    the correct answers (QuerySets) and the task result (per question). It return the rendered template.
     """
     course = get_object_or_404(Course, pk=course_id)
     submission = get_object_or_404(Submission, pk=subm_id)
