@@ -1,11 +1,11 @@
   applications:
-  - name: onlinecourse
+  - name: adaonlinecourse
     routes:
-      - route: host.domain
+      - route: myonlinecourse.eu-gb.mybluemix.net
     memory: 128M
     buildpack: python_buildpack
-  - name: onlinecourse-nginx
+  - name: adaonlinecourse-nginx
     routes:
-      - route: host.domain/static
+      - route: myonlinecourse.eu-gb.mybluemix.net/static
     memory: 128M
     buildpack: staticfile_buildpack
